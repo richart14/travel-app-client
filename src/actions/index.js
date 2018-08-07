@@ -40,6 +40,26 @@ export const fetchOneTrip = (tripId) => dispatch => {
   );
 };
 
+export const deleteTrip = (tripId) => dispatch => {
+  return(
+    fetch(`${API_BASE_URL}/trip/${tripId}`, {
+      method: 'DELETE'
+    })
+      .then(res => {
+        console.log(res);
+        if (!res.ok) {
+          return Promise.reject('Unable to reach server');
+        }
+      })
+      .then(() => {
+        dispatch(removeTripSuccess(tripId));
+      })
+      .catch(err => {
+        dispatch(removeTripError(err));
+      })
+  );
+};
+
 export const FETCH_TRIP_SUCCESS = 'FETCH_TRIP_SUCCESS';
 export const fetchOneTripSuccess = (trip) => ({
   type: FETCH_TRIP_SUCCESS,
@@ -66,5 +86,16 @@ export const fetchAllTripError = error => ({
   error
 });
 
+export const REMOVE_TRIP_SUCCESS = 'REMOVE_TRIP_SUCCESS';
+export const removeTripSuccess = (tripId) => ({
+  type: REMOVE_TRIP_SUCCESS,
+  tripId
+});
+
+export const REMOVE_TRIP_ERROR = 'REMOVE_TRIP_ERROR';
+export const removeTripError = (error) => ({
+  type: REMOVE_TRIP_ERROR,
+  error
+});
 
 

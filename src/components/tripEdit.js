@@ -2,17 +2,13 @@ import React from 'react';
 import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
 import {fetchOneTrip} from '../actions';
 import {API_BASE_URL} from '../config';
+import moment from 'moment';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './tripForm.css';
 
 
 export class TripForm extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
-    console.log(this.props);
-    console.log('constructor');
-  }
 
   componentDidMount() {
     this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
@@ -92,25 +88,32 @@ export class TripForm extends React.Component {
           type="checkbox"
         />
         <br />
-        <button type="submit" disabled={pristine || submitting}>Add Trip</button>
+        <Link to="/trips" style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+        <button type="submit" disabled={pristine || submitting}>Edit Trip</button>
       </form>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
-  return {
-    initialValues: state.tripReducer.trip
-  };
+  console.log(state);
+  if (state.tripReducer.trip) {
+    return {
+      initialValues: Object.assign({}, state.tripReducer.trip, {
+        startDate: moment(state.tripReducer.trip.startDate).format('YYYY-MM-DD')
+      })
+    };
+  } else {
+    return { initialValues: state.tripReducer.trip };
+  }
 };
+
+TripForm = reduxForm({
+  form: 'edit'
+})(TripForm);
 
 TripForm = connect(
   mapStateToProps
 )(TripForm);
 
-
-export default reduxForm({
-  form: 'edit',
-  enableReinitialize: true
-})(TripForm);
+export default TripForm;
