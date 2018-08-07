@@ -40,36 +40,31 @@ export const fetchOneTrip = (tripId) => dispatch => {
   );
 };
 
-export const FETCH_DAY_SUCCESS = 'FETCH_DAY_SUCCESS';
+export const FETCH_TRIP_SUCCESS = 'FETCH_TRIP_SUCCESS';
 export const fetchOneTripSuccess = (trip) => ({
-  type: FETCH_DAY_SUCCESS,
+  type: FETCH_TRIP_SUCCESS,
   trip
 });
 
-export const FETCH_DAY_ERROR = 'FETCH_DAY_ERROR';
-export const fetchOneTripError = error => ({
-  type: FETCH_DAY_ERROR,
-  error
-});
-
-export const FETCH_TRIP_REQUEST = 'FETCH_TRIP_REQUEST';
-
-export const FETCH_TRIP_SUCCESS = 'FETCH_TRIP_SUCCESS';
-export const fetchAllTripSuccess = trips => ({
-  type: FETCH_TRIP_SUCCESS,
-  trips
-});
-
 export const FETCH_TRIP_ERROR = 'FETCH_TRIP_ERROR';
-export const fetchAllTripError = error => ({
+export const fetchOneTripError = error => ({
   type: FETCH_TRIP_ERROR,
   error
 });
 
-export const CREATE_TRIP = 'CREATE_TRIP';
-export const createTrip = (location, date) => ({
-  type: CREATE_TRIP,
-  location,
-  date
+export const FETCH_TRIPS_REQUEST = 'FETCH_TRIPS_REQUEST';
+
+export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
+export const fetchAllTripSuccess = trips => ({
+  type: FETCH_TRIPS_SUCCESS,
+  trips
 });
+
+export const FETCH_TRIPS_ERROR = 'FETCH_TRIP_ERROR';
+export const fetchAllTripError = error => ({
+  type: FETCH_TRIPS_ERROR,
+  error
+});
+
+
 

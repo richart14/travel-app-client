@@ -1,55 +1,36 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
-import {fetchAllTrip} from '../actions';
+import {fetchOneTrip} from '../actions';
 import {API_BASE_URL} from '../config';
-
+import {connect} from 'react-redux';
 import './tripForm.css';
 
 
 export class TripForm extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    // this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
+    console.log(this.props);
+    console.log('constructor');
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
+  }
   onSubmit(values) {
-    return fetch(`${API_BASE_URL}/trip`, {
-      method: 'POST',
-      body: JSON.stringify(values),
-      headers: {'Content-Type': 'application/json'}
-    })
-      .then(res => {
-        if (!res.ok) {
-          if (
-            res.headers.has('content-type') && 
-              res.headers
-                .get('content-type')
-                .startsWith('application/json')
-          ) {
-            return res.json()
-              .then(err => Promise.reject(err));
-          }
-          return Promise.reject({
-            code: res.status,
-            message: res.statusText
-          });
-        }
-        return;
-      })
-      .then(() => console.log('Submitted with values:', values))
-      .then(() => this.props.dispatch(reset('trip')))
-      .then(()=> this.props.dispatch(fetchAllTrip()))
-      .catch(err => Promise.reject(
-        new SubmissionError({
-          _error: 'Error submitting message'
-        })
-      ));
+    console.log(values);
   }
 
   render() {
+    console.log(this.props.initialValues);
+    // this.props.initialValues ? this.props.load(this.props.initialValues) : console.log('nothing to see here');
     const {handleSubmit, pristine, submitting} = this.props;
 
     let successMessage;
     if (this.props.submitSucceeded) {
       successMessage = (
         <div className="message message-success">
-          Trip added successfully
+          Trip editted successfully
         </div>
       );
     }
@@ -110,12 +91,26 @@ export class TripForm extends React.Component {
           component="input"
           type="checkbox"
         />
+        <br />
         <button type="submit" disabled={pristine || submitting}>Add Trip</button>
       </form>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  console.log('state', state);
+  return {
+    initialValues: state.tripReducer.trip
+  };
+};
+
+TripForm = connect(
+  mapStateToProps
+)(TripForm);
+
+
 export default reduxForm({
-  form: 'trip'
+  form: 'edit',
+  enableReinitialize: true
 })(TripForm);

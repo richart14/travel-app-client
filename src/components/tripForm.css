@@ -1,4 +1,9 @@
-.tripName, .startDate {
+.tripName, .startDate, .description, .destination {
   display: block;
   width: 100%;
+}
+
+.description {
+  resize: none;
+  height: 120px;
 }

@@ -3,9 +3,10 @@ import './app.css';
 import Sidebar from './sidebar';
 import TripList from './tripList';
 import TripForm from './tripForm';
+import TripEdit from './tripEdit';
 import SingleTrip from './single-trip';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 export default class App extends Component {
   render() {
@@ -17,10 +18,12 @@ export default class App extends Component {
           </header>
           <Sidebar />
           <main>
-            <TripForm />
             <Switch>
-              <Route exact path="/" component={TripList} />
-              <Route exact path="/:tripId" component={SingleTrip} />
+              <Redirect exact from="/" to="/home" />
+              <Route exact from="/trips/edit/:tripId" component={TripEdit} />
+              <Route exact path="/trips/create" component={TripForm} />
+              <Route exact path="/trips" component={TripList} />
+              <Route exact path="/trips/:tripId" component={SingleTrip} />
             </Switch>
           </main>   
         </div>

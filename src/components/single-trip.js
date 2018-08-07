@@ -7,11 +7,9 @@ class SingleTrip extends React.Component{
   constructor(props) {
     super(props);
     this.props.dispatch(fetchOneTrip(this.props.tripId));
-    console.log('constructor');
   }
 
   render() {
-    console.log('render passed');
     if (!this.props.trip) {
       return (<div></div>);
     }
