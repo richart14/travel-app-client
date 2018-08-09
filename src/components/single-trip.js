@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchOneTrip} from '../actions';
 import moment from 'moment';
-import requiresLogin from './requires-login';
-import {Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './single-trip.css';
 
 class SingleTrip extends React.Component{
@@ -14,10 +13,10 @@ class SingleTrip extends React.Component{
   }
 
   render() {
-    console.log('check 1');
     if (!this.props.trip) {
       return (<div>No Trips</div>);
     }
+    console.log(this.props.trip);
     let number;
     const dayList = this.props.trip.days.map((day, index) => {
       number = index;
@@ -53,7 +52,6 @@ class SingleTrip extends React.Component{
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('check 2');
   return Object.assign({}, state, {
     tripId: props.match.params.tripId,
     trip: state.tripReducer.trip

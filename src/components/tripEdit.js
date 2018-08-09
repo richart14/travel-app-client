@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import './tripForm.css';
 
 
-export class TripForm extends React.Component {
+export class TripEdit extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
@@ -17,7 +17,10 @@ export class TripForm extends React.Component {
     return fetch(`${API_BASE_URL}/trip/${this.props.match.params.tripId}`, {
       method: 'PUT',
       body: JSON.stringify(values),
-      headers: {'Content-Type': 'application/json'}
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.props.token}`
+      }
     })
       .then(res => {
         console.log(res);
@@ -125,26 +128,25 @@ export class TripForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
-  // console.log(props);
   if (state.tripReducer.trip) {
     return {
+      token: state.auth.authToken,
       initialValues: Object.assign({}, state.tripReducer.trip, {
         startDate: moment(state.tripReducer.trip.startDate).format('YYYY-MM-DD')
       })
     };
   } else {
-    return { initialValues: state.tripReducer.trip };
+    return { token: state.auth.authToken, initialValues: state.tripReducer.trip };
   }
 };
 
-TripForm = reduxForm({
+TripEdit = reduxForm({
   form: 'edit',
   enableReinitialize: true
-})(TripForm);
+})(TripEdit);
 
-TripForm = connect(
+TripEdit = connect(
   mapStateToProps
-)(TripForm);
+)(TripEdit);
 
-export default TripForm;
+export default TripEdit;

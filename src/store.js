@@ -4,15 +4,13 @@ import tripReducer from './reducers';
 import {reducer as formReducer} from 'redux-form';
 import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
-import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
   combineReducers({
     tripReducer, 
     form: formReducer,
-    auth: authReducer,
-    protectedData: protectedDataReducer
+    auth: authReducer
   }), 
   applyMiddleware(thunk));
 

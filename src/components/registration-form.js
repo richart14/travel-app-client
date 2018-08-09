@@ -34,6 +34,13 @@ export class RegistrationForm extends React.Component {
           name="username"
           validate={[required, nonEmpty, isTrimmed]}
         />
+        {/* <label htmlFor="email">Email</label>
+        <Field
+          component={Input}
+          type="text"
+          name="email"
+          validate={[required, nonEmpty, isTrimmed]}
+        /> */}
         <label htmlFor="password">Password</label>
         <Field
           component={Input}

@@ -29,6 +29,8 @@ class TripList extends React.Component{
             {`${moment(trip.startDate).format('MMM D')}${(trip.days.length > 0) ? moment(trip.startDate).add(trip.days.length, 'd').format(' - D, YYYY') : moment(trip.startDate).format(', YYYY')}`}
             <br />
             {`(${trip.days.length} day${trip.days.length === 1 ? '':'s'})`}
+            <br />
+            {trip.description}
           </p>
           <Link to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link to={`/trips/delete/${trip.id}`}>Delete</Link>
         </li>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
 import {fetchAllTrip} from '../actions';
+import {connect} from 'react-redux';
 import {API_BASE_URL} from '../config';
 
 import './tripForm.css';
@@ -9,11 +10,13 @@ import './tripForm.css';
 export class TripForm extends React.Component {
   
   onSubmit(values) {
-    console.log(this.props);
     return fetch(`${API_BASE_URL}/trip`, {
       method: 'POST',
       body: JSON.stringify(values),
-      headers: {'Content-Type': 'application/json'}
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.props.token}`
+      }
     })
       .then(res => {
         if (!res.ok) {
@@ -44,6 +47,7 @@ export class TripForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const {handleSubmit, pristine, submitting} = this.props;
 
     let successMessage;
@@ -117,6 +121,20 @@ export class TripForm extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: 'trip'
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.auth.currentUser !== null,
+    token: state.auth.authToken,
+  };
+};
+
+TripForm = reduxForm({
+  form: 'trip',
+  enableReinitialize: true
 })(TripForm);
+
+TripForm = connect(
+  mapStateToProps
+)(TripForm);
+
+export default TripForm;

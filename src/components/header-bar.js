@@ -1,15 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
+import {Redirect} from 'react-router';
 import {clearAuthToken} from '../local-storage';
 
 export class HeaderBar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
+    // window.location = '/';
   }
 
   render() {
+
+    if (!this.props.loggedIn) {
+      return (<Redirect to="/" />);
+    }
     // Only render the log out button if we are logged in
     let logOutButton;
     if (this.props.loggedIn) {

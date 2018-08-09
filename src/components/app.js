@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 import Sidebar from './sidebar';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
-import Dashboard from './dashboard';
+import SingleTrip from './single-trip';
+import TripDelete from './tripDelete';
+import TripEdit from './tripEdit';
+import TripList from './tripList';
+import TripForm from './tripForm';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -45,12 +49,16 @@ export class App extends Component {
         {/* <header className="App-header">
             <h1 className="App-title">Travel App</h1>
           </header> */}
-        <Sidebar items={['thing one', 'thing two', 'thing three', 'thing four']} />
+        {/* <Sidebar items={['thing one', 'thing two', 'thing three', 'thing four']} /> */}
         <main>
           <HeaderBar />
+          <Route exact path="/trips" component={TripForm} />
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/register" component={RegistrationPage} />
+          <Route exact path="/trips/:tripId" component={SingleTrip} />
+          <Route exact path="/trips/edit/:tripId" component={TripEdit} />
+          <Route exact path="/trips" component={TripList} />
+          <Route path="/trips/delete/:tripId" component={TripDelete} />
         </main>   
       </div>
     );

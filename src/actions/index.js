@@ -27,7 +27,6 @@ export const fetchAllTrip = () => (dispatch, getState) => {
 
 export const fetchOneTrip = (tripId) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  console.log(authToken);
   return(
     fetch(`${API_BASE_URL}/trip/${tripId}`, {
       method: 'GET',
