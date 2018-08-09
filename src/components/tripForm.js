@@ -110,7 +110,7 @@ export class TripForm extends React.Component {
           component="input"
           type="checkbox"
         />
-        <button type="submit" disabled={pristine || submitting}>Add Trip</button>
+        <button type="submit" disabled={pristine || submitting}>Add New Trip</button>
       </form>
     );
   }

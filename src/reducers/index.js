@@ -1,4 +1,4 @@
-import { FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR, FETCH_TRIP_SUCCESS, REMOVE_TRIP_SUCCESS, REMOVE_TRIP_ERROR} from '../actions';
+import { FETCH_TRIPS_SUCCESS, FETCH_TRIPS_ERROR, FETCH_TRIP_SUCCESS, REMOVE_TRIP_SUCCESS, REMOVE_TRIP_ERROR, EDIT_TRIP_SUCCESS, EDIT_TRIP_ERROR} from '../actions';
 
 const initialState = {
   trips: [],
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default function tripReducer (state=initialState, action) {
-  console.log(action.type);
+  console.log(action);
   console.log(state);
   switch(action.type) {
   case FETCH_TRIPS_SUCCESS:
@@ -26,6 +26,16 @@ export default function tripReducer (state=initialState, action) {
       trips: state.trips.filter(trip => trip.id !== action.tripId ? true : false)
     });
   case REMOVE_TRIP_ERROR: 
+    return Object.assign({}, state, {
+      error: action.error
+    });
+  case EDIT_TRIP_SUCCESS:
+    return Object.assign({}, state, {
+      trips: state.trips.map(trip =>
+        trip.id === action.trip.id ? action.trip : trip
+      )
+    });
+  case EDIT_TRIP_ERROR:
     return Object.assign({}, state, {
       error: action.error
     });

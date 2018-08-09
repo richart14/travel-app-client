@@ -1,6 +1,6 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
-import {fetchOneTrip} from '../actions';
+import {reduxForm, Field, SubmissionError} from 'redux-form';
+import {fetchOneTrip, editTripSuccess} from '../actions';
 import {API_BASE_URL} from '../config';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
@@ -14,12 +14,41 @@ export class TripForm extends React.Component {
     this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
   }
   onSubmit(values) {
-    console.log(values);
+    return fetch(`${API_BASE_URL}/trip/${this.props.match.params.tripId}`, {
+      method: 'PUT',
+      body: JSON.stringify(values),
+      headers: {'Content-Type': 'application/json'}
+    })
+      .then(res => {
+        console.log(res);
+        if (!res.ok) {
+          if (
+            res.headers.has('content-type') && 
+              res.headers
+                .get('content-type')
+                .startsWith('application/json')
+          ) {
+            return res.json()
+              .then(err => Promise.reject(err));
+          }
+          return Promise.reject({
+            code: res.status,
+            message: res.statusText
+          });
+        }
+        return;
+      })
+      .then(() => console.log('Editted with values:', values))
+      .then(()=> this.props.dispatch(editTripSuccess(values)))
+      .catch(err => Promise.reject(
+        new SubmissionError({
+          _error: 'Error submitting message'
+        })
+      ));
   }
 
   render() {
-    console.log(this.props.initialValues);
-    // this.props.initialValues ? this.props.load(this.props.initialValues) : console.log('nothing to see here');
+
     const {handleSubmit, pristine, submitting} = this.props;
 
     let successMessage;
@@ -96,7 +125,8 @@ export class TripForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
+  // console.log(props);
   if (state.tripReducer.trip) {
     return {
       initialValues: Object.assign({}, state.tripReducer.trip, {
@@ -109,7 +139,8 @@ const mapStateToProps = (state) => {
 };
 
 TripForm = reduxForm({
-  form: 'edit'
+  form: 'edit',
+  enableReinitialize: true
 })(TripForm);
 
 TripForm = connect(

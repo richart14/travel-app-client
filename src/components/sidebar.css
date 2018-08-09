@@ -1,12 +1,13 @@
 .sidebar {
   width: 160px;
-  position: fixed;
+  position: relative;
   z-index: 1;
-  top: 250px;
-  left: 10px;
+  /* top: 250px; */
+  /* left: 10px; */
   background-color: beige;
   overflow-x: hidden;
   padding-top: 8px 0;
+  float: left;
 }
 
 .trip-list {

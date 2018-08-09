@@ -14,15 +14,15 @@ export default class App extends Component {
     return (
       <Router>
         <div className="App">
-          <header className="App-header">
+          {/* <header className="App-header">
             <h1 className="App-title">Travel App</h1>
-          </header>
-          <Sidebar />
+          </header> */}
+          <Sidebar items={['First Item', 'Second Item', 'Third Item', 'Fourth Item']}/>
           <main>
+            <Route exact path="/trips" component={TripForm} />
             <Switch>
               <Redirect exact from="/" to="/trips" />
               <Route exact from="/trips/edit/:tripId" component={TripEdit} />
-              <Route exact path="/trips/create" component={TripForm} />
               <Route exact path="/trips" component={TripList} />
               <Route exact path="/trips/:tripId" component={SingleTrip} />
               <Route path="/trips/delete/:tripId" component={TripDelete} />

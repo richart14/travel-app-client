@@ -16,7 +16,6 @@ class TripList extends React.Component{
   render() {
     const tripList = this.props.trips.map(trip => {
       const dateString = moment(trip.startDate).format('MMMM YYYY');
-
       return (
         <li key={trip.id} className='tripList'>
           <Link to={`/trips/${trip.id}`}>

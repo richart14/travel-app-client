@@ -46,7 +46,6 @@ export const deleteTrip = (tripId) => dispatch => {
       method: 'DELETE'
     })
       .then(res => {
-        console.log(res);
         if (!res.ok) {
           return Promise.reject('Unable to reach server');
         }
@@ -98,4 +97,15 @@ export const removeTripError = (error) => ({
   error
 });
 
+export const EDIT_TRIP_SUCCESS = 'EDIT_TRIP_SUCCESS';
+export const editTripSuccess = (trip) => ({
+  type: EDIT_TRIP_SUCCESS,
+  trip
+});
+
+export const EDIT_TRIP_ERROR = 'EDIT_TRIP_ERROR';
+export const editTripError = (error) => ({
+  type: EDIT_TRIP_SUCCESS,
+  error
+});
 
