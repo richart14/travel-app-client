@@ -31,6 +31,7 @@ export class TripDelete extends React.Component{
 }
 
 const mapStateToProps = (state, props) => {
+  console.log(state);
   return Object.assign({}, state, {
     tripId: props.match.params.tripId,
     trip: state.tripReducer.trip

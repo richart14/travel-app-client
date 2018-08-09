@@ -6,8 +6,6 @@ const initialState = {
 };
 
 export default function tripReducer (state=initialState, action) {
-  console.log(action);
-  console.log(state);
   switch(action.type) {
   case FETCH_TRIPS_SUCCESS:
     return Object.assign({}, state, {

@@ -1,9 +1,14 @@
 import {API_BASE_URL} from '../config';
 
-export const fetchAllTrip = () => dispatch => {
+export const fetchAllTrip = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
   return(
     fetch(`${API_BASE_URL}/trip`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        // Provide our auth token as credentials
+        Authorization: `Bearer ${authToken}`
+      }
     })
       .then(res => {
         if (!res.ok) {
@@ -20,10 +25,16 @@ export const fetchAllTrip = () => dispatch => {
   );
 };
 
-export const fetchOneTrip = (tripId) => dispatch => {
+export const fetchOneTrip = (tripId) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  console.log(authToken);
   return(
     fetch(`${API_BASE_URL}/trip/${tripId}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        // Provide our auth token as credentials
+        Authorization: `Bearer ${authToken}`
+      }
     })
       .then(res => {
         if (!res.ok) {
@@ -40,10 +51,15 @@ export const fetchOneTrip = (tripId) => dispatch => {
   );
 };
 
-export const deleteTrip = (tripId) => dispatch => {
+export const deleteTrip = (tripId) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
   return(
     fetch(`${API_BASE_URL}/trip/${tripId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        // Provide our auth token as credentials
+        Authorization: `Bearer ${authToken}`
+      }
     })
       .then(res => {
         if (!res.ok) {

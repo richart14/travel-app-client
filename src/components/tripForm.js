@@ -9,6 +9,7 @@ import './tripForm.css';
 export class TripForm extends React.Component {
   
   onSubmit(values) {
+    console.log(this.props);
     return fetch(`${API_BASE_URL}/trip`, {
       method: 'POST',
       body: JSON.stringify(values),
