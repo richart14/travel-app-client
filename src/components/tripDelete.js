@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchOneTrip, deleteTrip} from '../actions';
+import {fetchOneTrip, deleteTrip} from '../actions/trips';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 

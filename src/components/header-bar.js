@@ -8,14 +8,13 @@ export class HeaderBar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
-    // window.location = '/';
+    window.location = '/';
   }
 
   render() {
-
-    if (!this.props.loggedIn) {
-      return (<Redirect to="/" />);
-    }
+    // if (!this.props.loggedIn) {
+    //   return (<Redirect to="/" />);
+    // }
     // Only render the log out button if we are logged in
     let logOutButton;
     if (this.props.loggedIn) {
@@ -32,8 +31,10 @@ export class HeaderBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
-});
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.auth.currentUser !== null,
+  };
+};
 
 export default connect(mapStateToProps)(HeaderBar);

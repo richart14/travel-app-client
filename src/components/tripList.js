@@ -1,14 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { fetchAllTrip } from '../actions';
+import { fetchAllTrip } from '../actions/trips';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 import './tripList.css';
 
 
 class TripList extends React.Component{
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     this.props.dispatch(fetchAllTrip());
   }
   

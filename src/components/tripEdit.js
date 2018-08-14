@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
-import {fetchOneTrip, editTripSuccess} from '../actions';
+import {fetchOneTrip, editTripSuccess} from '../actions/trips';
 import {API_BASE_URL} from '../config';
 import moment from 'moment';
 import {Link} from 'react-router-dom';

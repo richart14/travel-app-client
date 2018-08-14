@@ -11,7 +11,12 @@ export const length = length => value => {
     return `Must be at most ${length.max} characters long`;
   }
 };
+export const isEmail = value => {
+  const re = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}','i');
+  return re.test(value) ? undefined : `${value} is not an email format`;
+};
 export const matches = field => (value, allValues) =>
   field in allValues && value.trim() === allValues[field].trim()
     ? undefined
     : 'Does not match';
+

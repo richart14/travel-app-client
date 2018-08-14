@@ -55,7 +55,7 @@ export class App extends Component {
           <Route exact path="/trips" component={TripForm} />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={RegistrationPage} />
-          <Route exact path="/trips/:tripId" component={SingleTrip} />
+          <Route exact path="/trips/:tripId" component={SingleTrip} location={this.props.location}/>
           <Route exact path="/trips/edit/:tripId" component={TripEdit} />
           <Route exact path="/trips" component={TripList} />
           <Route path="/trips/delete/:tripId" component={TripDelete} />

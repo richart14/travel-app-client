@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
-import {fetchAllTrip} from '../actions';
+import {fetchAllTrip} from '../actions/trips';
 import {connect} from 'react-redux';
 import {API_BASE_URL} from '../config';
 
@@ -47,7 +47,6 @@ export class TripForm extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const {handleSubmit, pristine, submitting} = this.props;
 
     let successMessage;
@@ -122,6 +121,9 @@ export class TripForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // let {currentUser} = state.auth;
+  // console.log(currentUser);
+  // figure out the best way to display the current user
   return {
     loggedIn: state.auth.currentUser !== null,
     token: state.auth.authToken,
