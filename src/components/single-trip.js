@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchOneTrip} from '../actions/trips';
-import {createDay} from '../actions/days';
+import {createDay, deleteDay} from '../actions/days';
 import moment from 'moment';
 import {Link, withRouter} from 'react-router-dom';
+import {Redirect} from 'react-router';
 import Plan from './plans';
 import './single-trip.css';
 
@@ -18,6 +19,22 @@ class SingleTrip extends React.Component{
     // add page workaround
     window.location.reload();
   }
+
+  handleDelete(dayId) {
+    console.log('deleting ', dayId);
+    this.props.dispatch(deleteDay(dayId));
+    window.location.reload();
+  }
+
+  handleEdit() {
+    console.log('editing');
+  }
+
+  handleAddPlan(dayId, type) {
+    console.log('adding plan of ', type, 'with dayId: ', dayId, this.props.tripId);
+    window.location = `/trips/${this.props.tripId}/${dayId}/create/${type}`;
+  }
+
   render() {
     if (!this.props.trip) {
       return (<div>Trips loading...</div>);
@@ -32,11 +49,11 @@ class SingleTrip extends React.Component{
           <br />
           {day.content}
           <br />
-          <button>Edit</button>
+          <button onClick={() => this.handleEdit()}>Edit</button>
           {' | '}
-          <Link to='/'>Delete</Link >
+          <button onClick={() => this.handleDelete(day.id)}>Delete</button >
           {' | '}
-          <select onChange={value => console.log(this)}>
+          <select onChange={(e) => this.handleAddPlan(day.id, e.target.value)}>
             <option>Add Plan</option>
             <option value='flight'>Flight</option>
             <option value='rental'>Rental</option>

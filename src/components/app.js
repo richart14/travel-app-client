@@ -9,6 +9,7 @@ import TripDelete from './tripDelete';
 import TripEdit from './tripEdit';
 import TripList from './tripList';
 import TripForm from './tripForm';
+import PlanForm from './planForm';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -52,13 +53,14 @@ export class App extends Component {
         {/* <Sidebar items={['thing one', 'thing two', 'thing three', 'thing four']} /> */}
         <main>
           <HeaderBar />
-          <Route exact path="/trips" component={TripForm} />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={RegistrationPage} />
+          <Route exact path="/trips" component={TripForm} />
+          <Route exact path="/trips" component={TripList} />
           <Route exact path="/trips/:tripId" component={SingleTrip} location={this.props.location}/>
           <Route exact path="/trips/edit/:tripId" component={TripEdit} />
-          <Route exact path="/trips" component={TripList} />
-          <Route path="/trips/delete/:tripId" component={TripDelete} />
+          <Route exact path="/trips/delete/:tripId" component={TripDelete} />
+          <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
         </main>   
       </div>
     );
