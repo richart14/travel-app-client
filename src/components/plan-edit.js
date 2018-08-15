@@ -1,28 +1,45 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
-import {Link} from 'react-router-dom';
-import Input from './input';
-import {API_BASE_URL} from '../config';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { fetchPlan } from '../actions/plans';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { API_BASE_URL } from '../config';
 
-export class PlanForm extends React.Component {
+export class PlanEdit extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchPlan(this.props.match.params.planId));
+  }
   onSubmit(values) {
-    const newBody = Object.assign({}, values, {
-      type: this.props.match.params.type,
-      dayId: this.props.match.params.dayId
-    });
-
-    return fetch(`${API_BASE_URL}/plan` , {
-      method: 'POST',
-      body: JSON.stringify(newBody),
+    return fetch(`${API_BASE_URL}/plan/${this.props.match.params.planId}`, {
+      method: 'PUT',
+      body: JSON.stringify({...values, type: this.props.type}),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.props.token}`
       }
     })
-      .then(() => {
-        window.location = `/trips/${this.props.match.params.tripId}`;
-      })
+    .then(res => {
+      console.log(res);
+      if (!res.ok) {
+        if (
+          res.headers.has('content-type') && 
+            res.headers
+              .get('content-type')
+              .startsWith('application/json')
+        ) {
+          return res.json()
+            .then(err => Promise.reject(err));
+        }
+        return Promise.reject({
+          code: res.status,
+          message: res.statusText
+        });
+      }
+      return;
+    })
+    .then(() => console.log('Editted with values:', values))
+    .then(()=> window.location = '/trips')
       .catch(err => Promise.reject(
         new SubmissionError({
           _error: 'Error submitting message'
@@ -30,9 +47,9 @@ export class PlanForm extends React.Component {
       ));
   }
   render() {
+    console.log(this.props);
     let tripId = this.props.match.params.tripId;
-    let dayId = this.props.match.params.dayId;
-    let type = this.props.match.params.type;
+    let type = this.props.type;
     const {handleSubmit, pristine, submitting} = this.props;
     
     switch(type) {
@@ -61,7 +78,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'rental':
@@ -132,7 +149,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`}style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'cruise':
@@ -203,7 +220,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'housing':
@@ -266,7 +283,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'dining':
@@ -329,7 +346,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'activity':
@@ -400,7 +417,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'meeting':
@@ -471,7 +488,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'map':
@@ -509,7 +526,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'direction':
@@ -547,7 +564,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     case 'other':
@@ -625,7 +642,7 @@ export class PlanForm extends React.Component {
           />
           <br />
           <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
     default:
@@ -633,8 +650,6 @@ export class PlanForm extends React.Component {
         <div>
           placeholder for now, but you probably broke it 
           {tripId}
-          <br />
-          {dayId}
           <br />
           {type}
         </div>
@@ -645,18 +660,28 @@ export class PlanForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    token: state.auth.authToken
-  };
+  console.log(state);
+  if (state.tripReducer.plan) {
+    return {
+      token: state.auth.authToken,
+      type: state.tripReducer.plan ? state.tripReducer.plan.type : null,
+      initialValues: Object.assign({}, state.tripReducer.plan, {
+        checkIn: moment(state.tripReducer.plan.checkIn).format('YYYY-MM-DDThh:mm'),
+        checkOut: moment(state.tripReducer.plan.checkOut).format('YYYY-MM-DDThh:mm')
+      })
+    };
+  } else {
+    return {token: state.auth.authToken};
+  }
 };
 
-PlanForm = reduxForm({
-  form: 'plan',
+PlanEdit = reduxForm({
+  form: 'plan-edit',
   enableReinitialize: true
-})(PlanForm);
+})(PlanEdit);
 
-PlanForm = connect(
+PlanEdit = connect(
   mapStateToProps
-)(PlanForm);
+)(PlanEdit);
 
-export default PlanForm;
+export default PlanEdit;

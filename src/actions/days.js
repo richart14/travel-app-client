@@ -41,10 +41,8 @@ export const deleteDay = (dayId) => (dispatch, getState) => {
         if (!res.ok) {
           return Promise.reject('Unable to reach server');
         }
+        dispatch(deleteDaySuccess(dayId));
         return res.json();
-      })
-      .then(data => {
-        console.log(data);
       })
       .catch(err => {
         dispatch(deleteDayError(err));
@@ -65,9 +63,9 @@ export const createDayError = (error) => ({
 });
 
 export const DELETE_DAY_SUCCESS = 'DELETE_DAY_SUCCESS';
-export const deleteDaySuccess = (trip) => ({
+export const deleteDaySuccess = (dayId) => ({
   type: DELETE_DAY_SUCCESS,
-  trip
+  dayId
 });
 
 export const DELETE_DAY_ERROR = 'DELETE_DAY_ERROR';

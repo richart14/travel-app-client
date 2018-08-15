@@ -8,6 +8,8 @@ export default function SinglePlan(props) {
     case 'flight':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -37,6 +39,8 @@ export default function SinglePlan(props) {
     case 'rental':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -66,6 +70,8 @@ export default function SinglePlan(props) {
     case 'cruise':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -95,6 +101,8 @@ export default function SinglePlan(props) {
     case 'housing':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -122,6 +130,8 @@ export default function SinglePlan(props) {
     case 'dining':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -146,6 +156,8 @@ export default function SinglePlan(props) {
     case 'activity':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -170,6 +182,8 @@ export default function SinglePlan(props) {
     case 'meeting':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -199,6 +213,8 @@ export default function SinglePlan(props) {
     case 'map':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -219,6 +235,8 @@ export default function SinglePlan(props) {
     case 'direction':
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -239,6 +257,8 @@ export default function SinglePlan(props) {
     case 'other': 
       return (
         <li key={plan.id}>
+          <button>EDIT</button>
+          <button>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />

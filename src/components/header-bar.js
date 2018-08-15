@@ -11,21 +11,27 @@ export class HeaderBar extends React.Component {
     window.location = '/';
   }
 
+  homePage() {
+    window.location = '/trips';
+  }
+
   render() {
-    // if (!this.props.loggedIn) {
-    //   return (<Redirect to="/" />);
-    // }
     // Only render the log out button if we are logged in
     let logOutButton;
+    let homeButton;
     if (this.props.loggedIn) {
       logOutButton = (
         <button onClick={() => this.logOut()}>Log out</button>
+      );
+      homeButton = (
+        <button onClick={() => this.homePage()}>Home Page</button>
       );
     }
     return (
       <div className="header-bar">
         <h1>Travel App</h1>
         {logOutButton}
+        {homeButton}
       </div>
     );
   }

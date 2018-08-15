@@ -10,6 +10,7 @@ import TripEdit from './tripEdit';
 import TripList from './tripList';
 import TripForm from './tripForm';
 import PlanForm from './planForm';
+import PlanEdit from './plan-edit';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -33,7 +34,7 @@ export class App extends Component {
   startPeriodicRefresh() {
     this.refreshInterval = setInterval(
       () => this.props.dispatch(refreshAuthToken()),
-      60 * 60 * 1000 // One hour
+      10 * 60 * 1000 // 10 minutes
     );
   }
 
@@ -61,6 +62,7 @@ export class App extends Component {
           <Route exact path="/trips/edit/:tripId" component={TripEdit} />
           <Route exact path="/trips/delete/:tripId" component={TripDelete} />
           <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
+          <Route exact path="/trips/:tripId/:planId/edit" component={PlanEdit} />
         </main>   
       </div>
     );

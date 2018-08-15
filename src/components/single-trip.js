@@ -9,25 +9,31 @@ import Plan from './plans';
 import './single-trip.css';
 
 class SingleTrip extends React.Component{
-  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      edit: false
+    };
+  }
   componentDidMount() {
     this.props.dispatch(fetchOneTrip(this.props.tripId));
   }
 
   handleClick() {
     this.props.dispatch(createDay(this.props.tripId));
-    // add page workaround
-    window.location.reload();
   }
 
   handleDelete(dayId) {
     console.log('deleting ', dayId);
     this.props.dispatch(deleteDay(dayId));
-    window.location.reload();
   }
 
-  handleEdit() {
-    console.log('editing');
+  handleEdit(dayId) {
+    console.log('editing', dayId);
+    this.setState({
+      edit: !this.state.edit
+    });
   }
 
   handleAddPlan(dayId, type) {
@@ -39,6 +45,17 @@ class SingleTrip extends React.Component{
     if (!this.props.trip) {
       return (<div>Trips loading...</div>);
     }
+
+    // how to properly use refs Mario
+    let editDiv;
+    console.log(this.props);
+    if (this.state.edit) {
+      editDiv = 
+        <form>
+          <input type='text' />
+          <button>Submit Edit</button>
+        </form>;
+    }
     
     let number;
     const dayList = this.props.trip.days.map((day, index) => {
@@ -49,7 +66,8 @@ class SingleTrip extends React.Component{
           <br />
           {day.content}
           <br />
-          <button onClick={() => this.handleEdit()}>Edit</button>
+          <button onClick={() => this.handleEdit(day.id)}>Edit</button>
+          {editDiv}
           {' | '}
           <button onClick={() => this.handleDelete(day.id)}>Delete</button >
           {' | '}
