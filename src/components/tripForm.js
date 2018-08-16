@@ -68,53 +68,60 @@ export class TripForm extends React.Component {
     
     return (
       <form 
+        className="tripForm"
         onSubmit={handleSubmit(values =>
           this.onSubmit(values)
         )}>
         {successMessage}
         {errorMessage}
-        <label htmlFor="destination">Destination</label>
-        <Field
-          className="destination"
-          type="text"
-          component="input"
-          id="destination"
-          name="destination"
-          placeholder="Begin at a city..."
-        />
-        <label htmlFor="tripName">Trip Name</label>
-        <Field 
-          className="tripName"
-          type="text" 
-          component="input"
-          id="tripName" 
-          name="name" 
-          placeholder="Your Trip Name" 
-        />
-        <label htmlFor="startDate">Start Date</label>
-        <Field 
-          name="startDate"
-          component="input"
-          type="date"
-          id="startDate"
-          className="startDate"
-        />
-        <label htmlFor="description">Trip Description</label>
-        <Field 
-          className="description"
-          type="text" 
-          component="textarea"
-          id="description" 
-          name="description"
-        />
-        <label htmlFor="isTraveler">I'm a traveler on this trip</label>
-        <Field 
-          name="isTraveler"
-          id="isTraveler"
-          component="input"
-          type="checkbox"
-        />
-        <button type="submit" disabled={pristine || submitting}>Add New Trip</button>
+        <div className="row">
+          <div className="col-6 left">
+            <label className="col-2" htmlFor="destination">Destination</label>
+            <Field
+              className="destination col-8"
+              type="text"
+              component="input"
+              id="destination"
+              name="destination"
+              placeholder="Begin at a city..."
+            />
+            <label className="col-2" htmlFor="tripName">Trip Name </label>
+            <Field 
+              className="tripName col-8"
+              type="text" 
+              component="input"
+              id="tripName" 
+              name="name" 
+              placeholder="Your Trip Name" 
+            />
+            <label className="col-2" htmlFor="startDate">Start Date </label>
+            <Field 
+              name="startDate col-8"
+              component="input"
+              type="date"
+              id="startDate"
+              className="startDate"
+            />
+          </div>
+          <div className="col-6 right">
+            <label className="col-8" htmlFor="description">Trip Description</label>
+            <Field 
+              className="description col-8"
+              type="text" 
+              component="textarea"
+              id="description" 
+              name="description"
+            />
+            <label htmlFor="isTraveler">I'm a traveler on this trip</label>
+            <Field 
+              name="isTraveler"
+              id="isTraveler"
+              component="input"
+              type="checkbox"
+            />
+          </div>
+          <button className="tripFormButton" type="submit" disabled={pristine || submitting}>Add New Trip</button>
+        </div>
       </form>
     );
   }

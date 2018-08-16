@@ -1,28 +1,21 @@
-.App {
+/* .App {
   text-align: center;
   display: flex;
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #222;
   height: 50px;
   padding: 20px;
   color: white;
-}
+} */
 
-.App-title {
+/* .App-title {
   font-size: 1.5em;
-}
+} */
 
 main {
   flex-grow: 1;
-  padding: 10px;
-  background-color: gainsboro;
+  background-color: #BDBDBD;
 }
 
-.testbox {
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-  background-color: blue;
-}

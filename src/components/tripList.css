@@ -1,9 +1,11 @@
 .tripList {
-  border: 10px solid darkolivegreen;
-  padding: 1px;
+  border: 3px solid #03A9F4;
+  padding: 30px;
   margin-bottom: 4px;
 }
 
 ul {
   padding: 0;
+  color: black;
+  background-color: #BDBDBD;
 }

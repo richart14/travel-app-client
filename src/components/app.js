@@ -11,6 +11,7 @@ import TripList from './tripList';
 import TripForm from './tripForm';
 import PlanForm from './planForm';
 import PlanEdit from './plan-edit';
+import {LocationSearchInput} from './locationSearchInput';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -48,12 +49,8 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-            <h1 className="App-title">Travel App</h1>
-          </header> */}
-        {/* <Sidebar items={['thing one', 'thing two', 'thing three', 'thing four']} /> */}
+        <HeaderBar />
         <main>
-          <HeaderBar />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/trips" component={TripForm} />
@@ -63,6 +60,7 @@ export class App extends Component {
           <Route exact path="/trips/delete/:tripId" component={TripDelete} />
           <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
           <Route exact path="/trips/:tripId/:planId/edit" component={PlanEdit} />
+          <Route exact path="/test" component={LocationSearchInput} />
         </main>   
       </div>
     );

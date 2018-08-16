@@ -31,7 +31,7 @@ class TripList extends React.Component{
             <br />
             {trip.description}
           </p>
-          <Link to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link to={`/trips/delete/${trip.id}`}>Delete</Link>
+          <Link className="buttonLink" to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link className="buttonLink" to={`/trips/delete/${trip.id}`}>Delete</Link>
         </li>
       );
     });

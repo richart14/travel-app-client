@@ -48,7 +48,6 @@ class SingleTrip extends React.Component{
 
     // how to properly use refs Mario
     let editDiv;
-    console.log(this.props);
     if (this.state.edit) {
       editDiv = 
         <form>

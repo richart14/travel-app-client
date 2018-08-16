@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import './landing-page.css';
 
 import LoginForm from './login-form';
 
@@ -12,9 +13,10 @@ export function LandingPage(props) {
 
   return (
     <div className="home">
-      <h2>Richard's Travel App!</h2>
+      <h2>Make plans for any and all your trips!</h2>
+      <p>Build your itineraries and make sure you have a plan no matter where you are!</p>
       <LoginForm />
-      <Link to="/register">Register</Link>
+      <Link className="buttonLink" to="/register">Register</Link>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchOneTrip, deleteTrip} from '../actions/trips';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
+import './tripDelete.css';
 
 export class TripDelete extends React.Component{
   componentDidMount() {
@@ -15,14 +16,14 @@ export class TripDelete extends React.Component{
     }
     
     return(
-      <div>
+      <div className="tripDelete">
         <h2> 
           {`Delete Trip: ${this.props.trip.name}, ${moment(this.props.trip.startDate).format('MMMM YYYY')}`}
         </h2>
         <p>Once deleted, you will not be able to access the trip plan or day plans</p>
-        <Link to='/trips'>Cancel</Link>
+        <Link className="buttonLink" to='/trips'>Cancel</Link>
         &nbsp;&nbsp;|&nbsp;&nbsp; 
-        <Link onClick={() => {
+        <Link className="buttonLink" onClick={() => {
           this.props.dispatch(deleteTrip(this.props.match.params.tripId));
         }} to='/trips'>Delete</Link>
       </div>

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {Redirect} from 'react-router';
 import {clearAuthToken} from '../local-storage';
+import './header-bar.css';
 
 export class HeaderBar extends React.Component {
   logOut() {
@@ -21,17 +22,21 @@ export class HeaderBar extends React.Component {
     let homeButton;
     if (this.props.loggedIn) {
       logOutButton = (
-        <button onClick={() => this.logOut()}>Log out</button>
+        <button className="header-button" onClick={() => this.logOut()}>Log out</button>
       );
       homeButton = (
-        <button onClick={() => this.homePage()}>Home Page</button>
+        <button className="header-button" onClick={() => this.homePage()}>Home Page</button>
       );
     }
     return (
       <div className="header-bar">
-        <h1>Travel App</h1>
-        {logOutButton}
-        {homeButton}
+        <div className="left-header">
+          <h1>Itinerary Planner</h1>
+        </div>
+        <div className="right-header">
+          {homeButton}
+          {logOutButton}
+        </div>
       </div>
     );
   }
