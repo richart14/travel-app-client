@@ -39,7 +39,7 @@ export class PlanEdit extends React.Component {
       return;
     })
     .then(() => console.log('Editted with values:', values))
-    .then(()=> window.location = '/trips')
+    .then(()=> window.location = `/trips/${this.props.match.params.tripId}`)
       .catch(err => Promise.reject(
         new SubmissionError({
           _error: 'Error submitting message'

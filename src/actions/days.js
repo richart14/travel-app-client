@@ -5,7 +5,8 @@ export const createDay = (tripId) => (dispatch, getState) => {
   return(
     fetch(`${API_BASE_URL}/day`, {
       method: 'POST',
-      body: JSON.stringify({tripId, content:'Add content about this day'}),
+      // body: JSON.stringify({tripId, content:'Add content about this day'}),
+      body: JSON.stringify({tripId}),
       headers: {
         'Content-Type': 'application/json',
         // Provide our auth token as credentials

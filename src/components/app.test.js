@@ -5,6 +5,7 @@ import App from './app';
 
 describe('<App />', () => {
   it('Render without crashing', () => {
-    shallow(<App />);
+    const wrapper = shallow(<App />);
+    // console.log(wrapper.debug());
   });
 });

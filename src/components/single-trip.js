@@ -5,7 +5,7 @@ import {createDay, deleteDay} from '../actions/days';
 import moment from 'moment';
 import {Link, withRouter} from 'react-router-dom';
 import {Redirect} from 'react-router';
-import Plan from './plans';
+import {SinglePlan} from './plans';
 import './single-trip.css';
 
 class SingleTrip extends React.Component{
@@ -65,9 +65,9 @@ class SingleTrip extends React.Component{
           <br />
           {day.content}
           <br />
-          <button onClick={() => this.handleEdit(day.id)}>Edit</button>
+          {/* <button onClick={() => this.handleEdit(day.id)}>Edit</button> */}
           {editDiv}
-          {' | '}
+          {/* {' | '} */}
           <button onClick={() => this.handleDelete(day.id)}>Delete</button >
           {' | '}
           <select onChange={(e) => this.handleAddPlan(day.id, e.target.value)}>
@@ -83,7 +83,7 @@ class SingleTrip extends React.Component{
             <option value='direction'>Direction</option>
             <option value='other'>Other</option>
           </select>
-          <Plan planList={day.plans} />
+          <SinglePlan planList={day.plans} tripId={this.props.tripId}/>
         </li>
       );
     });

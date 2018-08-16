@@ -86,7 +86,7 @@ export const fetchOneTripError = error => ({
   error
 });
 
-export const FETCH_TRIPS_REQUEST = 'FETCH_TRIPS_REQUEST';
+// export const FETCH_TRIPS_REQUEST = 'FETCH_TRIPS_REQUEST';
 
 export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
 export const fetchAllTripSuccess = trips => ({
@@ -120,7 +120,7 @@ export const editTripSuccess = (trip) => ({
 
 export const EDIT_TRIP_ERROR = 'EDIT_TRIP_ERROR';
 export const editTripError = (error) => ({
-  type: EDIT_TRIP_SUCCESS,
+  type: EDIT_TRIP_ERROR,
   error
 });
 

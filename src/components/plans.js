@@ -2,13 +2,13 @@ import React from 'react';
 import moment from 'moment';
 import './plans.css';
 
-export default function SinglePlan(props) {
+export function SinglePlan(props) {
   const planList = props.planList.map(plan => {
     switch(plan.type) {
     case 'flight':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location='/trips'}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -39,7 +39,7 @@ export default function SinglePlan(props) {
     case 'rental':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -70,7 +70,7 @@ export default function SinglePlan(props) {
     case 'cruise':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -101,7 +101,7 @@ export default function SinglePlan(props) {
     case 'housing':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -130,7 +130,7 @@ export default function SinglePlan(props) {
     case 'dining':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -156,7 +156,7 @@ export default function SinglePlan(props) {
     case 'activity':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -182,8 +182,8 @@ export default function SinglePlan(props) {
     case 'meeting':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => props.dispatch()}>DELETE</button>
           <div className='plans'>
             {plan.type}
             <br />
@@ -213,7 +213,7 @@ export default function SinglePlan(props) {
     case 'map':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -235,7 +235,7 @@ export default function SinglePlan(props) {
     case 'direction':
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
@@ -257,7 +257,7 @@ export default function SinglePlan(props) {
     case 'other': 
       return (
         <li key={plan.id}>
-          <button>EDIT</button>
+          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
           <div className='plans'>
             {plan.type}
