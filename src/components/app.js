@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
 import {connect} from 'react-redux';
-import Sidebar from './sidebar';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import SingleTrip from './single-trip';
@@ -11,7 +10,6 @@ import TripList from './tripList';
 import TripForm from './tripForm';
 import PlanForm from './planForm';
 import PlanEdit from './plan-edit';
-import {LocationSearchInput} from './locationSearchInput';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -60,7 +58,6 @@ export class App extends Component {
           <Route exact path="/trips/delete/:tripId" component={TripDelete} />
           <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
           <Route exact path="/trips/:tripId/:planId/edit" component={PlanEdit} />
-          <Route exact path="/test" component={LocationSearchInput} />
         </main>   
       </div>
     );

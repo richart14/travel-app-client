@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
-import {Redirect} from 'react-router';
 import {clearAuthToken} from '../local-storage';
 import './header-bar.css';
 

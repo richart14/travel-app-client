@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {fetchOneTrip} from '../actions/trips';
 import {createDay, deleteDay} from '../actions/days';
 import moment from 'moment';
-import {Link, withRouter} from 'react-router-dom';
-import {Redirect} from 'react-router';
+import {withRouter} from 'react-router-dom';
 import {SinglePlan} from './plans';
 import './single-trip.css';
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
 import {Link} from 'react-router-dom';
-import Input from './input';
 import {API_BASE_URL} from '../config';
 import {connect} from 'react-redux';
 

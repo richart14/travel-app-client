@@ -50,7 +50,7 @@ export class PlanEdit extends React.Component {
     console.log(this.props);
     let tripId = this.props.match.params.tripId;
     let type = this.props.type;
-    const {handleSubmit, pristine, submitting} = this.props;
+    const {handleSubmit} = this.props;
     
     switch(type) {
       case 'flight':
