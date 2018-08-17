@@ -52,7 +52,7 @@ export class TripEdit extends React.Component {
 
   render() {
 
-    const {handleSubmit, pristine, submitting} = this.props;
+    const {handleSubmit} = this.props;
 
     let successMessage;
     if (this.props.submitSucceeded) {
@@ -80,54 +80,62 @@ export class TripEdit extends React.Component {
         {successMessage}
         {errorMessage}
         <div className="row">
-          <div className="col-6 left">
-            <label className="col-2" htmlFor="destination">Destination</label>
-            <Field
-              className="destination col-8"
-              type="text"
-              component="input"
-              id="destination"
-              name="destination"
-              placeholder="Begin at a city..."
-            />
-            <label className="col-2" htmlFor="tripName">Trip Name </label>
-            <Field 
-              className="tripName col-8"
-              type="text" 
-              component="input"
-              id="tripName" 
-              name="name" 
-              placeholder="Your Trip Name" 
-            />
-            <label className="col-2" htmlFor="startDate">Start Date </label>
-            <Field 
-              name="startDate col-8"
-              component="input"
-              type="date"
-              id="startDate"
-              className="startDate"
-            />
+          <div className="col s6">
+            <div className="col s12">
+              <label className="col" htmlFor="destination">Destination</label>
+              <Field
+                className="destination col s8"
+                type="text"
+                component="input"
+                id="destination"
+                name="destination"
+                placeholder="Begin at a city..."
+              />
+            </div>
+            <div className="col s12">
+              <label className="col" htmlFor="tripName">Trip Name </label>
+              <Field 
+                className="tripName col s8"
+                type="text" 
+                component="input"
+                id="tripName" 
+                name="name" 
+                placeholder="Your Trip Name" 
+              />
+            </div>
+            <div className="col s12">
+              <label className="col" htmlFor="startDate">Start Date </label>
+              <Field 
+                name="startDate"
+                component="input"
+                type="date"
+                id="startDate"
+                className="startDate col s6"
+              />
+            </div>
           </div>
-          <div className="col-6 right">
-            <label className="col-8" htmlFor="description">Trip Description</label>
-            <Field 
-              className="description col-8"
-              type="text" 
-              component="textarea"
-              id="description" 
-              name="description"
-            />
-            <label htmlFor="isTraveler">I'm a traveler on this trip</label>
+          <div className="col s6">
+            <div className="col s12">
+              <label className="col" htmlFor="description">Trip Description</label>
+              <Field 
+                className="description col s8"
+                type="text" 
+                component="textarea"
+                id="description" 
+                name="description"
+              />
+            </div>
+          </div>
+          {/* <label htmlFor="isTraveler">I'm a traveler on this trip</label>
             <Field 
               name="isTraveler"
               id="isTraveler"
               component="input"
               type="checkbox"
-            />
-          </div>
-          <Link to="/trips" className="buttonLink" style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
-          <button type="submit" disabled={pristine || submitting}>Edit Trip</button>
+            /> */}
         </div>
+        <Link to="/trips" className="buttonLink tripFormButton" style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+        <button className="tripFormButton" type="submit">Edit Trip</button>
       </form>
     );
   }

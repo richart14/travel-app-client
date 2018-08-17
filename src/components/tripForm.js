@@ -10,6 +10,7 @@ import './tripForm.css';
 export class TripForm extends React.Component {
   
   onSubmit(values) {
+    console.log(values);
     return fetch(`${API_BASE_URL}/trip`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -47,7 +48,7 @@ export class TripForm extends React.Component {
   }
 
   render() {
-    const {handleSubmit, pristine, submitting} = this.props;
+    const {handleSubmit} = this.props;
 
     let successMessage;
     if (this.props.submitSucceeded) {
@@ -75,53 +76,61 @@ export class TripForm extends React.Component {
         {successMessage}
         {errorMessage}
         <div className="row">
-          <div className="col-6 left">
-            <label className="col-2" htmlFor="destination">Destination</label>
-            <Field
-              className="destination col-8"
-              type="text"
-              component="input"
-              id="destination"
-              name="destination"
-              placeholder="Begin at a city..."
-            />
-            <label className="col-2" htmlFor="tripName">Trip Name </label>
-            <Field 
-              className="tripName col-8"
-              type="text" 
-              component="input"
-              id="tripName" 
-              name="name" 
-              placeholder="Your Trip Name" 
-            />
-            <label className="col-2" htmlFor="startDate">Start Date </label>
-            <Field 
-              name="startDate col-8"
-              component="input"
-              type="date"
-              id="startDate"
-              className="startDate"
-            />
+          <div className="col s6">
+            <div className="col s12">
+              <label className="col" htmlFor="destination">Destination</label>
+              <Field
+                className="destination col s8"
+                type="text"
+                component="input"
+                id="destination"
+                name="destination"
+                placeholder="Begin at a city..."
+              />
+            </div>
+            <div className="col s12">
+              <label className="col" htmlFor="tripName">Trip Name </label>
+              <Field 
+                className="tripName col s8"
+                type="text" 
+                component="input"
+                id="tripName" 
+                name="name" 
+                placeholder="Your Trip Name" 
+              />
+            </div>
+            <div className="col s12">
+              <label className="col" htmlFor="startDate">Start Date </label>
+              <Field 
+                name="startDate"
+                component="input"
+                type="date"
+                id="startDate"
+                className="startDate col s6"
+              />
+            </div>
           </div>
-          <div className="col-6 right">
-            <label className="col-8" htmlFor="description">Trip Description</label>
-            <Field 
-              className="description col-8"
-              type="text" 
-              component="textarea"
-              id="description" 
-              name="description"
-            />
-            <label htmlFor="isTraveler">I'm a traveler on this trip</label>
-            <Field 
-              name="isTraveler"
-              id="isTraveler"
-              component="input"
-              type="checkbox"
-            />
+          <div className="col s6">
+            <div className="col s12">
+              <label className="col" htmlFor="description">Trip Description</label>
+              <Field 
+                className="description col s8"
+                type="text" 
+                component="textarea"
+                id="description" 
+                name="description"
+              />
+            </div>
           </div>
-          <button className="tripFormButton" type="submit" disabled={pristine || submitting}>Add New Trip</button>
+          {/* <label htmlFor="isTraveler">I'm a traveler on this trip</label>
+          <Field 
+            name="isTraveler"
+            id="isTraveler"
+            component="input"
+            type="checkbox"
+          /> */}
         </div>
+        <button className="tripFormButton wave-effect" type="submit" >Add New Trip</button>
       </form>
     );
   }

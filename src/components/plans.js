@@ -4,35 +4,37 @@ import './plans.css';
 
 export function SinglePlan(props) {
   const planList = props.planList.map(plan => {
-    switch(plan.type) {
+    switch (plan.type) {
     case 'flight':
       return (
         <li key={plan.id}>
-          <div className="row">
-            <button onClick={() => window.location='/trips'}>EDIT</button>
-            <button>DELETE</button>
-            <div className='plans'>
-              <div className="planType">
+          <button onClick={() => window.location = '/trips'}>EDIT</button>
+          <button>DELETE</button>
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
                 {plan.type}
               </div>
-              {moment(plan.checkIn).format('M/D/YY')}
-              <br />
-              {plan.description}
-              <br />
-              {`Confirmation #: ${plan.confirmation}`}
-              <div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
                 <br />
                 {plan.locationName}
                 <br />
                 {plan.location}
               </div>
-              <div>
+              <div className="col s12">
                 {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
                 <br />
                 {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
               </div>
-              <div>
+              <div className="col s12">
                 {`Notes: ${plan.notes || ''}`}
               </div>
             </div>
@@ -42,31 +44,35 @@ export function SinglePlan(props) {
     case 'rental':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.locationName}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Pick Up ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`Drop Off ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
-              <br />
-              {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'days')} Day${moment(plan.checkOut).diff(moment(plan.checkIn), 'days') === 1 ? '' : 's'})`}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Pick Up ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`Drop Off ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
+                <br />
+                {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'days')} Day${moment(plan.checkOut).diff(moment(plan.checkIn), 'days') === 1 ? '' : 's'})`}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -74,31 +80,35 @@ export function SinglePlan(props) {
     case 'cruise':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
-              <br />
-              {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
+                <br />
+                {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -106,29 +116,33 @@ export function SinglePlan(props) {
     case 'housing':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {`Arrive ${plan.locationName}`}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Check In ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`Check Out ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
-              <br />
-              {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'days')} Night${moment(plan.checkOut).diff(moment(plan.checkIn), 'days') === 1 ? '' : 's'})`}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {`Arrive ${plan.locationName}`}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Check In ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`Check Out ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
+                <br />
+                {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'days')} Night${moment(plan.checkOut).diff(moment(plan.checkIn), 'days') === 1 ? '' : 's'})`}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -136,26 +150,30 @@ export function SinglePlan(props) {
     case 'dining':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -163,26 +181,30 @@ export function SinglePlan(props) {
     case 'activity':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -190,31 +212,35 @@ export function SinglePlan(props) {
     case 'meeting':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
-              <br />
-              {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
+                <br />
+                {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -222,22 +248,26 @@ export function SinglePlan(props) {
     case 'map':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
@@ -245,54 +275,62 @@ export function SinglePlan(props) {
     case 'direction':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.location}
-              <br />
-              {plan.endAddress}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.location}
+                <br />
+                {plan.endAddress}
+              </div>
+              <div className="col s12">
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>
       );
-    case 'other': 
+    case 'other':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location=`/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
           <button>DELETE</button>
-          <div className='plans'>
-            <div className="planType">
-              {plan.type}
-            </div>
-            {moment(plan.checkIn).format('M/D/YY')}
-            <br />
-            {plan.description}
-            <br />
-            {`Confirmation #: ${plan.confirmation}`}
-            <div>
-              {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
-              <br />
-              {plan.locationName}
-              <br />
-              {plan.location}
-            </div>
-            <div>
-              {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
-              <br />
-              {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
-            </div>
-            <div>
-              {`Notes: ${plan.notes || ''}`}
+          <div className='plans row'>
+            <div className="col s12">
+              <div className="planType col s6">
+                {plan.type}
+              </div>
+              <div className="col s6">
+                {moment(plan.checkIn).format('M/D/YY')}
+                <br />
+                {plan.description}
+                <br />
+                {`Confirmation #: ${plan.confirmation}`}
+              </div>
+              <div className="col s12">
+                {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
+                <br />
+                {plan.locationName}
+                <br />
+                {plan.location}
+              </div>
+              <div className="col s12">
+                {`End: ${moment(plan.checkOut).format('M/D/YY H:mm A')}`}
+                <br />
+                {`(${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours')} Hour${moment(plan.checkOut).diff(moment(plan.checkIn), 'hours') === 1 ? '' : 's'})`}
+              </div>
+              <div>
+                {`Notes: ${plan.notes || ''}`}
+              </div>
             </div>
           </div>
         </li>

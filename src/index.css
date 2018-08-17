@@ -11,7 +11,7 @@ ul, li {
   list-style-type: none;
 }
 
-h2 {
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -20,7 +20,9 @@ html, body, #root, .App, main {
 }
 
 a {
+  color: #039be5;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 /* section,main,aside,header,footer{
   border:1px solid lightgray;
