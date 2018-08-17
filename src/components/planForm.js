@@ -750,13 +750,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-PlanForm = reduxForm({
+let PlanFormRedux = reduxForm({
   form: 'plan',
   enableReinitialize: true
 })(PlanForm);
 
-PlanForm = connect(
+PlanFormRedux = connect(
   mapStateToProps
-)(PlanForm);
+)(PlanFormRedux);
 
-export default PlanForm;
+export default PlanFormRedux;

@@ -10,7 +10,8 @@ describe('tripReducer', () => {
     const initialState = {
       trips: [],
       trip: undefined,
-      plan: undefined
+      plan: undefined,
+      error: null
     };
     const state = tripReducer(undefined, {type: '@@UNKNOWN'});
     expect(state).toEqual(initialState);

@@ -6,6 +6,7 @@ import { PlanForm } from './planForm';
 
 describe('<PlanForm />', () => {
   it('should render without crashing', () => {
-    shallow(<PlanForm />);
+    const match = {params: {id:1}};
+    const wrapper = shallow(<PlanForm match={match}/>);
   });
 });

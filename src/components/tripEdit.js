@@ -154,13 +154,13 @@ const mapStateToProps = (state) => {
   }
 };
 
-TripEdit = reduxForm({
+let TripEditRedux = reduxForm({
   form: 'edit',
   enableReinitialize: true
 })(TripEdit);
 
-TripEdit = connect(
+TripEditRedux = connect(
   mapStateToProps
-)(TripEdit);
+)(TripEditRedux);
 
-export default TripEdit;
+export default TripEditRedux;

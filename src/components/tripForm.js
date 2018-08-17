@@ -145,13 +145,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-TripForm = reduxForm({
+let TripFormRedux = reduxForm({
   form: 'trip',
   enableReinitialize: true
 })(TripForm);
 
-TripForm = connect(
+TripFormRedux = connect(
   mapStateToProps
-)(TripForm);
+)(TripFormRedux);
 
-export default TripForm;
+export default TripFormRedux;

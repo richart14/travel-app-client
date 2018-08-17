@@ -20,7 +20,6 @@ export class PlanEdit extends React.Component {
       }
     })
     .then(res => {
-      console.log(res);
       if (!res.ok) {
         if (
           res.headers.has('content-type') && 
@@ -47,7 +46,6 @@ export class PlanEdit extends React.Component {
       ));
   }
   render() {
-    console.log(this.props);
     let tripId = this.props.match.params.tripId;
     let type = this.props.type;
     const {handleSubmit} = this.props;
@@ -760,7 +758,6 @@ export class PlanEdit extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   if (state.tripReducer.plan) {
     return {
       token: state.auth.authToken,
