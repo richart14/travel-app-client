@@ -4,7 +4,8 @@ import {FETCH_PLAN_SUCCESS, FETCH_PLAN_ERROR} from '../actions/plans';
 const initialState = {
   trips: [],
   trip: undefined,
-  plan: undefined
+  plan: undefined,
+  error: null,
 };
 
 export default function tripReducer (state=initialState, action) {

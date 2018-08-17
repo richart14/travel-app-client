@@ -17,21 +17,34 @@ class TripList extends React.Component{
       const dateString = moment(trip.startDate).format('MMMM YYYY');
       return (
         <li key={trip.id} className='tripList'>
-          <Link to={`/trips/${trip.id}`}>
-            {trip.name}
-            <br/>
-            {dateString}
-          </Link>
-          <p>
-            {trip.destination}
-            <br/>
-            {`${moment(trip.startDate).format('MMM D')}${(trip.days.length > 0) ? moment(trip.startDate).add(trip.days.length, 'd').format(' - D, YYYY') : moment(trip.startDate).format(', YYYY')}`}
-            <br />
-            {`(${trip.days.length} day${trip.days.length === 1 ? '':'s'})`}
-            <br />
-            {trip.description}
-          </p>
-          <Link className="buttonLink" to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link className="buttonLink" to={`/trips/delete/${trip.id}`}>Delete</Link>
+          <div className="row">
+            <div className="col s12 m6">
+              <div className="card whitesmoke">
+                <div className="card-content">
+                  <div className="card-title">
+                    <Link to={`/trips/${trip.id}`}>
+                      {trip.name}
+                      <br/>
+                      {dateString}
+                    </Link>
+                  </div>
+                  <p>
+                    {trip.destination}
+                    <br/>
+                    {`${moment(trip.startDate).format('MMM D')}${(trip.days.length > 0) ? moment(trip.startDate).add(trip.days.length, 'd').format(' - D, YYYY') : moment(trip.startDate).format(', YYYY')}`}
+                    <br />
+                    {`(${trip.days.length} day${trip.days.length === 1 ? '':'s'})`}
+                    <br />
+                    {trip.description}
+                  </p>
+                </div>
+                <div className="card-action">
+                  <Link className="buttonLink" to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link className="buttonLink" to={`/trips/delete/${trip.id}`}>Delete</Link>
+                </div>
+                
+              </div>
+            </div>
+          </div>
         </li>
       );
     });

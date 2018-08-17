@@ -11,7 +11,7 @@
   width: 100%;
 }
 .row:after{
-  clear: both;
+  /* clear: both; */
 }
 .col-2 {
   width: 1/6%;
@@ -32,17 +32,17 @@
 .col-12 {
   width: 100%;
 }
-.left {
+/* .left {
   float: left;
   margin-top: 20px;
-}
+} */
 .left * {
   margin: 5px 2px;
 }
-.right {
+/* .right {
   float: right;
   margin-top: 20px;
-}
+} */
 
 .tripForm {
   min-height: 200px;

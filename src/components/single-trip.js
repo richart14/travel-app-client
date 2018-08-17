@@ -92,11 +92,13 @@ class SingleTrip extends React.Component{
     const dateString = `From ${startDate} till ${endDate}`;
 
     return (
-      <div>
-        <ul>
+      <div className="singleTrip">
+        <div className="singleTrip-header">
           <h2>{this.props.trip.name}</h2>
           <p>{dateString}</p>
           <button onClick={() => this.handleClick()}>Add Day</button>
+        </div>
+        <ul>
           {dayList}
         </ul>
       </div>

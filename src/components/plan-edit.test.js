@@ -7,6 +7,8 @@ import { PlanEdit } from './plan-edit';
 
 describe('<PlanEdit />', () => {
   it('should render without crashing', () => {
-    const wrapper = shallow(<PlanEdit />);
+    const match = {params: {id:1}};
+    const mock = jest.fn();
+    const wrapper = shallow(<PlanEdit match={match} dispatch={mock}/>);
   });
 });

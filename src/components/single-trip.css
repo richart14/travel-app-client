@@ -1,5 +1,23 @@
 .dayList {
-  padding: 10px 0;
-  margin: 10px 0;
-  border-bottom: 5px solid black;
+  padding: 10px;
+  margin: 10px;
+  background-color: #03A9F4;
+  color: #ffffff;
+}
+
+.dayList button {
+  margin: 5px;
+}
+
+.dayList li {
+  background-color: #B3E5FC
+}
+/* .singleTrip {
+  padding: 20px;
+} */
+
+.singleTrip-header {
+  background-color: #03A9F4;
+  color: whitesmoke;
+  padding: 20px;
 }

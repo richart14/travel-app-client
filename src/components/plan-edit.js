@@ -77,7 +77,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -148,7 +148,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`}style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`}style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -219,7 +219,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -282,7 +282,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -345,7 +345,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -416,7 +416,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -487,7 +487,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -525,7 +525,7 @@ export class PlanEdit extends React.Component {
             name = "checkIn"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -563,7 +563,7 @@ export class PlanEdit extends React.Component {
             name = "checkIn"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -641,7 +641,7 @@ export class PlanEdit extends React.Component {
             name = "notes"
           />
           <br />
-          <Link to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+          <Link className="buttonLink" to={`/trips/${tripId}`} style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
           <button type="submit" disabled={pristine || submitting}>Edit</button>
         </form>
       );
@@ -675,13 +675,13 @@ const mapStateToProps = (state) => {
   }
 };
 
-PlanEdit = reduxForm({
+let PlanEditRedux = reduxForm({
   form: 'plan-edit',
   enableReinitialize: true
 })(PlanEdit);
 
-PlanEdit = connect(
+PlanEditRedux = connect(
   mapStateToProps
-)(PlanEdit);
+)(PlanEditRedux);
 
-export default PlanEdit;
+export default PlanEditRedux;
