@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchOneTrip, deleteTrip} from '../actions/trips';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './tripDelete.css';
 
 export class TripDelete extends React.Component{
@@ -11,8 +11,12 @@ export class TripDelete extends React.Component{
   }
 
   render() {
+    if (!this.props.loggedIn) {
+      return (<Redirect to="/" />);
+    }
+    
     if (!this.props.trip) {
-      return (<div></div>);
+      return (<div>Loading...</div>);
     }
     
     return(
@@ -34,7 +38,8 @@ export class TripDelete extends React.Component{
 const mapStateToProps = (state, props) => {
   return Object.assign({}, state, {
     tripId: props.match.params.tripId,
-    trip: state.tripReducer.trip
+    trip: state.tripReducer.trip,
+    loggedIn: state.auth.currentUser
   });
 };
 

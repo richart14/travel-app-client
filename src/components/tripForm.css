@@ -1,120 +1,8 @@
 textarea {
   resize: none;
 }
-.description  {
-  height: 100px;
-}
-
-.row {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-}
-
-.row * {
-  margin-bottom: 10px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.row .col {
-  float: left;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0 0.75rem;
-  min-height: 1px;
-}
-
-.row .col.s1 {
-  width: 8.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s2 {
-  width: 16.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s3 {
-  width: 25%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s4 {
-  width: 33.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s5 {
-  width: 41.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s6 {
-  width: 50%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s7 {
-  width: 58.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s8 {
-  width: 66.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s9 {
-  width: 75%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s10 {
-  width: 83.3333333333%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s11 {
-  width: 91.6666666667%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
-
-.row .col.s12 {
-  width: 100%;
-  margin-left: auto;
-  left: auto;
-  right: auto;
-}
 
 .tripForm {
-  min-height: 200px;
   background-color: #03A9F4;
   padding: 30px;
 }
@@ -133,4 +21,70 @@ textarea {
   text-transform: uppercase;
 }
 
+/* new stuff after this point */
+.form-input, 
+#formStartDate, 
+#pickUpDate, 
+#dropOffDate {
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: white;
+  margin: 10px;
+}
 
+
+
+label {
+  margin: 10px;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.formrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+  }
+}

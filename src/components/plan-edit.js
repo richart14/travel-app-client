@@ -2,7 +2,7 @@ import React from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
 import { connect } from 'react-redux';
 import { fetchPlan } from '../actions/plans';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { API_BASE_URL } from '../config';
 
@@ -46,6 +46,11 @@ export class PlanEdit extends React.Component {
       ));
   }
   render() {
+
+    if (!this.props.token) {
+      return (<Redirect to="/" />);
+    }
+
     let tripId = this.props.match.params.tripId;
     let type = this.props.type;
     const {handleSubmit} = this.props;
@@ -62,20 +67,86 @@ export class PlanEdit extends React.Component {
                 <h2>Add {type}</h2>
               </div>
               <div className="col s12">
-                <h3>Provider</h3>
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s4"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col s12">
+                  <h3>How are you flying?</h3>
+                </div>
+                <div className="col-25">
+                  <label htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="airlineDesc">Airline</label>
+                </div>
+                <div className="col-75">
+                  <Field
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "airlineDesc"
+                    name = "description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="departueDate">Depature Date/Time</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "departureDate"
+                    name = "checkIn"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="airport">Airport</label>
+                </div>
+                <div className="col-75">
+                  <Field
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "airport"
+                    name = "locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="airportAddress">Airport Address</label>
+                </div>
+                <div className="col-75">
+                  <Field
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "airportAddress"
+                    name = "location"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="landingDate">Landing Date/Time</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "landingDate"
+                    name = "checkOut"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s12"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -84,7 +155,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'rental':
@@ -99,65 +170,93 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Provider</h3>
-                <label className="col" htmlFor="providerName">Name</label>
-                <Field 
-                  className="providerName col s4"
-                  component="input"
-                  type="text"
-                  id="providerName"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s4"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label htmlFor="providerName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="providerName"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Pick Up</h3>
-                <label className="col" htmlFor="pickUpName">Name</label>
-                <Field 
-                  className = "pickUpName col s3"
-                  component = "input"
-                  type = "text"
-                  id = "pickUpName"
-                  name = "locationName"
-                />
-                <label className="col" htmlFor="pickUpLocation">Address</label>
-                <Field 
-                  className = "pickUpLocation col s3"
-                  component = "input"
-                  type = "text"
-                  id = "pickUpLocation"
-                  name = "location"
-                />
-                <label className="col" htmlFor="pickUpDate">Pickup Date</label>
-                <Field 
-                  className = "pickUpDate col s2"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "pickUpDate"
-                  name = "checkIn"
-                />
               </div>
-              <div className="col s4">
+              <div className="col s12">
+                <div className="col-25">
+                  <label htmlFor="pickUpName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "pickUpName"
+                    name = "locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="pickUpLocation">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "pickUpLocation"
+                    name = "location"
+                  />
+                </div>
+                <div className="col-25">
+                  <label htmlFor="pickUpDate">Pickup Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "pickUpDate"
+                    name = "checkIn"
+                  />
+                </div>
+              </div>
+              <div className="col s12">
                 <h3>Drop Off</h3>
-                <label className="col" htmlFor="dropOffDate">Drop-off Date</label>
-                <Field 
-                  className = "dropOffDate col s6"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "dropOffDate"
-                  name = "checkOut"
-                />
               </div>
-              <div className="col s6">
+              <div className="col s12">
+                <div className="col-25">
+                  <label htmlFor="dropOffDate">Drop-off Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "dropOffDate"
+                    name = "checkOut"
+                  />
+                </div>
+              </div>
+              <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s12"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -166,7 +265,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'cruise':
@@ -181,65 +280,89 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Ship Information</h3>
-                <label className="col" htmlFor="cruiseLine">Cruise Line</label>
-                <Field 
-                  className="cruiseLine col s4"
-                  component="input"
-                  type="text"
-                  id="cruiseLine"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s4"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="cruiseLine">Cruise Line</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="cruiseLine"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Starting Port</h3>
-                <label className="col" htmlFor="startPortName">Name</label>
-                <Field 
-                  className = "startPortName col s3"
-                  component = "input"
-                  type = "text"
-                  id = "startPortName"
-                  name = "locationName"
-                />
-                <label className="col" htmlFor="startPort">Address</label>
-                <Field 
-                  className = "startPort col s3"
-                  component = "input"
-                  type = "text"
-                  id = "startPort"
-                  name = "location"
-                />
-                <label className="col" htmlFor="startDate">Start Date</label>
-                <Field 
-                  className = "startDate col s2"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
+                <div className="col-25">
+                  <label  htmlFor="startPortName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "startPortName"
+                    name = "locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="startPort">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "startPort"
+                    name = "location"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="startDate">Start Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
               </div>
-              <div className="col s6">
+              <div className="col s12">
                 <h3>Ending Port</h3>
-                <label className="col" htmlFor="endDate">End Date</label>
-                <Field 
-                  className = "endDate col s4"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "endPort"
-                  name = "checkOut"
-                />
+                <div className="col-25">
+                  <label  htmlFor="endDate">End Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "endPort"
+                    name = "checkOut"
+                  />
+                </div>
               </div>
-              <div className="col s6">
+              <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s12"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -248,7 +371,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'housing':
@@ -263,47 +386,67 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Confirmation</h3>
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s5"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Where are you staying</h3>
-                <label className="col" htmlFor="locationName">Name</label>
-                <Field 
-                  className="locationName col s3" 
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s5" 
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
               </div>
-              <div className="col s12">
-                <h3>How long are you staying</h3>
-                <label className="col" htmlFor="checkIn"> Check In</label>
+            </div>
+            <div className="col s12">
+              <h3>How long are you staying</h3>
+              <div className="col-25">
+                <label  htmlFor="checkIn"> Check In</label>
+              </div>
+              <div className="col-75">
                 <Field
-                  className="checkIn col s4"
+                  className="form-input"
                   component="input"
                   type="datetime-local"
                   id="checkIn"
                   name="checkIn"
                 />
-                <label className="col" htmlFor="checkOut">Check Out</label>
+              </div>
+              <div className="col-25">
+                <label  htmlFor="checkOut">Check Out</label>
+              </div>
+              <div className="col-75">
                 <Field
-                  className="checkOut col s4"
+                  className="form-input"
                   component="input"
                   type="datetime-local"
                   id="checkOut"
@@ -313,7 +456,7 @@ export class PlanEdit extends React.Component {
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s8"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -322,7 +465,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'dining':
@@ -337,57 +480,77 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Where are you dining?</h3>
-                <label className="col" htmlFor="locationName">Restaurant Name</label>
-                <Field 
-                  className="locationName col s3"
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s5"
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Restaurant Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>When are you dining?</h3>
-                <label className="col" htmlFor="checkIn">Date and Time</label>
-                <Field 
-                  className="checkIn col s4"
-                  component="input"
-                  type="datetime-local"
-                  id="checkIn"
-                  name="checkIn"
-                />
+                <div className="col-25">
+                  <label  htmlFor="checkIn">Date and Time</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="datetime-local"
+                    id="checkIn"
+                    name="checkIn"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Restaurant Details</h3>
-                <label className="col" htmlFor="cuisine">Cuisine</label>
-                <Field 
-                  className="cuisine col s3"
-                  component="input"
-                  type="text"
-                  id="cuisine"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s3"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="cuisine">Cuisine</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="cuisine"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s8"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -396,7 +559,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'activity':
@@ -411,65 +574,89 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>What are you doing?</h3>
-                <label className="col" htmlFor="activitydesc">Type of Activity</label>
-                <Field 
-                  className="activitydesc col s3"
-                  component="input"
-                  type="text"
-                  id="activitydesc"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s3"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="activitydesc">Type of Activity</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="activitydesc"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>When is the activity?</h3>
-                <label className="col" htmlFor="startDate">Start Date</label>
-                <Field 
-                  className = "startDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
-                <label className="col" htmlFor="endDate">End Date</label>
-                <Field 
-                  className = "endDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "endDate"
-                  name = "checkOut"
-                />
+                <div className="col-25">
+                  <label  htmlFor="startDate">Start Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="endDate">End Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "endDate"
+                    name = "checkOut"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Where is the activity?</h3>
-                <label className="col" htmlFor="locationName">Name</label>
-                <Field 
-                  className="locationName col s3" 
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s5" 
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s8"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -478,7 +665,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'meeting':
@@ -493,65 +680,89 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Meeting Details</h3>
-                <label className="col" htmlFor="meetDesc">Meeting Description</label>
-                <Field
-                  className="meetDesc col s3"
-                  component="input"
-                  type="text"
-                  id="meetDesc"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s4"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="meetDesc">Meeting Description</label>
+                </div>
+                <div className="col-75">
+                  <Field
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="meetDesc"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>When is the meeting?</h3>
-                <label className="col" htmlFor="startDate">Start Date</label>
-                <Field 
-                  className = "startDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
-                <label className="col" htmlFor="endDate">End Date</label>
-                <Field 
-                  className = "endDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "eDate"
-                  name = "checkOut"
-                />
+                <div className="col-25">
+                  <label  htmlFor="startDate">Start Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="endDate">End Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "eDate"
+                    name = "checkOut"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Where is the meeting?</h3>
-                <label className="col" htmlFor="locationName">Name</label>
-                <Field 
-                  className="locationName col s3" 
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s5" 
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s8"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -560,7 +771,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'map':
@@ -575,37 +786,49 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Where are you going?</h3>
-                <label className="col" htmlFor="locationName">Name</label>
-                <Field 
-                  className="locationName col s3" 
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s5" 
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>When are you going?</h3>
-                <label className="col" htmlFor="startDate">Date</label>
-                <Field 
-                  className = "startDate col s4"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
+                <div className="col-25">
+                  <label  htmlFor="startDate">Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'direction':
@@ -620,37 +843,49 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Where are you going?</h3>
-                <label className="col" htmlFor="start">Starting Address</label>
-                <Field 
-                  className="start col s3" 
-                  component="textarea"
-                  type="text"
-                  id="start"
-                  name="location"
-                />
-                <label className="col" htmlFor="end">Ending Address</label>
-                <Field 
-                  className="end col s3" 
-                  component="textarea"
-                  type="end"
-                  id="end"
-                  name="endAddress"
-                />
+                <div className="col-25">
+                  <label  htmlFor="start">Starting Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="start"
+                    name="location"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="end">Ending Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="end"
+                    id="end"
+                    name="endAddress"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>When are you going?</h3>
-                <label className="col" htmlFor="startDate">Date</label>
-                <Field 
-                  className = "startDate col s4"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
+                <div className="col-25">
+                  <label  htmlFor="startDate">Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
       case 'other':
@@ -665,73 +900,101 @@ export class PlanEdit extends React.Component {
               </div>
               <div className="col s12">
                 <h3>Details</h3>
-                <label className="col" htmlFor="desc">Description</label>
-                <Field
-                  className="desc col s4"
-                  component="input"
-                  type="text"
-                  id="desc"
-                  name="description"
-                />
-                <label className="col" htmlFor="confirmation">Confirmation #</label>
-                <Field 
-                  className = "confirmation col s4"
-                  component = "input"
-                  type = "text"
-                  id = "confirmation"
-                  name = "confirmation"
-                />
+                <div className="col-25">
+                  <label  htmlFor="desc">Description</label>
+                </div>
+                <div className="col-75">
+                  <Field
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="desc"
+                    name="description"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="confirmation">Confirmation #</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "text"
+                    id = "confirmation"
+                    name = "confirmation"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Depature</h3>
-                <label className="col" htmlFor="locationName">Name</label>
-                <Field 
-                  className="locationName col s2" 
-                  component="input"
-                  type="text"
-                  id="locationName"
-                  name="locationName"
-                />
-                <label className="col" htmlFor="location">Address</label>
-                <Field 
-                  className="location col s3" 
-                  component="textarea"
-                  type="text"
-                  id="location"
-                  name="location"
-                />
-                <label className="col" htmlFor="startDate">Start Date</label>
-                <Field 
-                  className = "startDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "startDate"
-                  name = "checkIn"
-                />
+                <div className="col-25">
+                  <label  htmlFor="locationName">Name</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="input"
+                    type="text"
+                    id="locationName"
+                    name="locationName"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="location">Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input"
+                    component="textarea"
+                    type="text"
+                    id="location"
+                    name="location"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="startDate">Start Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "startDate"
+                    name = "checkIn"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Arrival</h3>
-                <label className="col" htmlFor="endAddress">End Address</label>
-                <Field 
-                  className="endAddress col s4" 
-                  component="textarea"
-                  type="text"
-                  id="endAddress"
-                  name="endAddress"
-                />
-                <label className="col" htmlFor="endDate">End Date</label>
-                <Field 
-                  className = "endDate col s3"
-                  component = "input"
-                  type = "datetime-local"
-                  id = "endDate"
-                  name = "checkOut"
-                />
+                <div className="col-25">
+                  <label  htmlFor="endAddress">End Address</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className="form-input" 
+                    component="textarea"
+                    type="text"
+                    id="endAddress"
+                    name="endAddress"
+                  />
+                </div>
+                <div className="col-25">
+                  <label  htmlFor="endDate">End Date</label>
+                </div>
+                <div className="col-75">
+                  <Field 
+                    className = "form-input"
+                    component = "input"
+                    type = "datetime-local"
+                    id = "endDate"
+                    name = "checkOut"
+                  />
+                </div>
               </div>
               <div className="col s12">
                 <h3>Notes</h3>
                 <Field
-                  className = "notes col s8"
+                  className = "notes form-input"
                   component = "textarea"
                   type = "text"
                   id = "notes"
@@ -740,7 +1003,7 @@ export class PlanEdit extends React.Component {
               </div>
             </div>
             <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
-            <button className="tripFormButton" type="submit">Submit</button>
+            <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
     default:

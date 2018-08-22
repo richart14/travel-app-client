@@ -3,7 +3,7 @@ import {reduxForm, Field, SubmissionError} from 'redux-form';
 import {fetchOneTrip, editTripSuccess} from '../actions/trips';
 import {API_BASE_URL} from '../config';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './tripForm.css';
 
@@ -23,7 +23,6 @@ export class TripEdit extends React.Component {
       }
     })
       .then(res => {
-        console.log(res);
         if (!res.ok) {
           if (
             res.headers.has('content-type') && 
@@ -51,6 +50,9 @@ export class TripEdit extends React.Component {
   }
 
   render() {
+    if (!this.props.loggedIn) {
+      return (<Redirect to="/" />);
+    }
 
     const {handleSubmit} = this.props;
 
@@ -79,52 +81,58 @@ export class TripEdit extends React.Component {
         )}>
         {successMessage}
         {errorMessage}
-        <div className="row">
-          <div className="col s6">
-            <div className="col s12">
-              <label className="col" htmlFor="destination">Destination</label>
-              <Field
-                className="destination col s8"
-                type="text"
-                component="input"
-                id="destination"
-                name="destination"
-                placeholder="Begin at a city..."
-              />
-            </div>
-            <div className="col s12">
-              <label className="col" htmlFor="tripName">Trip Name </label>
-              <Field 
-                className="tripName col s8"
-                type="text" 
-                component="input"
-                id="tripName" 
-                name="name" 
-                placeholder="Your Trip Name" 
-              />
-            </div>
-            <div className="col s12">
-              <label className="col" htmlFor="startDate">Start Date </label>
-              <Field 
-                name="startDate"
-                component="input"
-                type="date"
-                id="startDate"
-                className="startDate col s6"
-              />
-            </div>
+        <div className="formrow">
+
+          <div className="col-25">
+            <label className="col" htmlFor="destination">Destination</label>
           </div>
-          <div className="col s6">
-            <div className="col s12">
-              <label className="col" htmlFor="description">Trip Description</label>
-              <Field 
-                className="description col s8"
-                type="text" 
-                component="textarea"
-                id="description" 
-                name="description"
-              />
-            </div>
+          <div className="col-75">
+            <Field
+              className="form-input desc"
+              type="text"
+              component="input"
+              id="destination"
+              name="destination"
+              placeholder="Begin at a city..."
+            />
+          </div>
+          <div className="col-25">
+            <label className="col" htmlFor="tripName">Trip Name </label>
+          </div>
+          <div className="col-75">
+            <Field 
+              className="form-input trip"
+              type="text" 
+              component="input"
+              id="tripName" 
+              name="name" 
+              placeholder="Your Trip Name" 
+            />
+          </div>
+          <div className="col-25">
+            <label className="col" htmlFor="startDate">Start Date </label>
+          </div>
+          <div className="col-75">
+            <Field 
+              name="form-input start"
+              component="input"
+              type="date"
+              id="formStartDate"
+              className="startDate col s6"
+            />
+          </div>
+
+          <div className="col-25">
+            <label className="col" htmlFor="description">Trip Description</label>
+          </div>
+          <div className="col-75">
+            <Field 
+              className="form-input desc"
+              type="text" 
+              component="textarea"
+              id="description" 
+              name="description"
+            />
           </div>
           {/* <label htmlFor="isTraveler">I'm a traveler on this trip</label>
             <Field 
@@ -145,12 +153,13 @@ const mapStateToProps = (state) => {
   if (state.tripReducer.trip) {
     return {
       token: state.auth.authToken,
+      loggedIn: state.auth.currentUser,
       initialValues: Object.assign({}, state.tripReducer.trip, {
         startDate: moment(state.tripReducer.trip.startDate).format('YYYY-MM-DD')
       })
     };
   } else {
-    return { token: state.auth.authToken, initialValues: state.tripReducer.trip };
+    return { token: state.auth.authToken, loggedIn: state.auth.currentUser, initialValues: state.tripReducer.trip };
   }
 };
 

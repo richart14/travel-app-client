@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
+import {Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
@@ -49,15 +50,17 @@ export class App extends Component {
       <div className="App">
         <HeaderBar />
         <main>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/trips" component={TripForm} />
-          <Route exact path="/trips" component={TripList} />
-          <Route exact path="/trips/:tripId" component={SingleTrip} location={this.props.location}/>
-          <Route exact path="/trips/edit/:tripId" component={TripEdit} />
-          <Route exact path="/trips/delete/:tripId" component={TripDelete} />
-          <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
-          <Route exact path="/trips/:tripId/:planId/edit" component={PlanEdit} />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/register" component={RegistrationPage} />
+            <Route exact path="/trips" component={TripList} />
+            <Route exact path="/trips/:tripId" component={SingleTrip} location={this.props.location}/>
+            <Route exact path="/trips/edit/:tripId" component={TripEdit} />
+            <Route exact path="/trips/delete/:tripId" component={TripDelete} />
+            <Route exact path="/trips/:tripId/:dayId/create/:type" component={PlanForm} />
+            <Route exact path="/trips/:tripId/:planId/edit" component={PlanEdit} />
+          </Switch>
         </main>   
       </div>
     );

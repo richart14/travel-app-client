@@ -1,8 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {fetchOneTrip} from '../actions/trips';
 import {createDay, deleteDay} from '../actions/days';
 import moment from 'moment';
+import {deletePlan} from '../actions/plans';
 import {withRouter} from 'react-router-dom';
 import {SinglePlan} from './plans';
 import './single-trip.css';
@@ -28,6 +30,11 @@ class SingleTrip extends React.Component{
     this.props.dispatch(deleteDay(dayId));
   }
 
+  handlePlanDelete(planId) {
+    console.log('deleting plan', planId);
+    this.props.dispatch(deletePlan(planId));
+  }
+
   handleEdit(dayId) {
     console.log('editing', dayId);
     this.setState({
@@ -41,6 +48,10 @@ class SingleTrip extends React.Component{
   }
 
   render() {
+    if (!this.props.loggedIn) {
+      return (<Redirect to="/" />);
+    }
+
     if (!this.props.trip) {
       return (<div>Trips loading...</div>);
     }
@@ -82,7 +93,7 @@ class SingleTrip extends React.Component{
             <option value='direction'>Direction</option>
             <option value='other'>Other</option>
           </select>
-          <SinglePlan planList={day.plans} tripId={this.props.tripId}/>
+          <SinglePlan planList={day.plans} tripId={this.props.tripId} dispatch={(planId) => this.handlePlanDelete(planId)}/>
         </li>
       );
     });
@@ -107,6 +118,7 @@ class SingleTrip extends React.Component{
 
 const mapStateToProps = (state, props) => {
   return Object.assign({}, state, {
+    loggedIn: state.auth.currentUser,
     tripId: props.match.params.tripId,
     trip: state.tripReducer.trip
   });

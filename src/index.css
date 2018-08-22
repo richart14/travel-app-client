@@ -5,6 +5,7 @@
 body {
   font-family:Helvetica,Arial,sans-serif;
   margin: 0 auto;
+  max-width: 1440px;
 }
 
 ul, li {
@@ -24,23 +25,11 @@ a {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
-/* section,main,aside,header,footer{
-  border:1px solid lightgray;
-  padding:.5em;
-  margin-bottom:1em;
+
+button, select {
+  background-color: white;
 }
 
-li {
-  list-style: none;
+form {
+  background-color: lightsteelblue;
 }
-
-nav {
-  text-align:right;
-}
-
-.avatar {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-} */
-

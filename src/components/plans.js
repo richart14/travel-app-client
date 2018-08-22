@@ -8,8 +8,8 @@ export function SinglePlan(props) {
     case 'flight':
       return (
         <li key={plan.id}>
-          <button onClick={() => window.location = '/trips'}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -20,7 +20,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
@@ -45,7 +45,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -58,7 +58,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Pick Up ${moment(plan.checkIn).format('H:mm A')}`}
@@ -81,7 +81,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -92,7 +92,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
@@ -117,7 +117,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -128,7 +128,7 @@ export function SinglePlan(props) {
                 <br />
                 {`Arrive ${plan.locationName}`}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Check In ${moment(plan.checkIn).format('H:mm A')}`}
@@ -151,7 +151,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -162,7 +162,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
@@ -182,7 +182,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -213,7 +213,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -224,7 +224,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
@@ -249,7 +249,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -276,7 +276,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -303,7 +303,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button>DELETE</button>
+          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -314,7 +314,7 @@ export function SinglePlan(props) {
                 <br />
                 {plan.description}
                 <br />
-                {`Confirmation #: ${plan.confirmation}`}
+                {`Confirmation #: ${plan.confirmation ? plan.confirmation : ''}`}
               </div>
               <div className="col s12">
                 {`Start: ${moment(plan.checkIn).format('H:mm A')}`}
@@ -353,3 +353,4 @@ export function SinglePlan(props) {
     </div>
   );
 }
+
