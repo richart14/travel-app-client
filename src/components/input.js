@@ -24,8 +24,8 @@ export default class Input extends React.Component {
       <div>
         <label htmlFor={this.props.input.name}>
           {this.props.label}
-          {error}
-          {warning}
+          <div aria-live="polite">{error}</div>
+          <div aria-live="polite">{warning}</div>
         </label>
         <input
           {...this.props.input}

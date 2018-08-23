@@ -24,7 +24,7 @@ export class LoginForm extends React.Component {
         onSubmit={this.props.handleSubmit(values =>
           this.onSubmit(values)
         )}>
-        {error}
+        <div aria-live="polite">{error}</div>
         <label htmlFor="username">Username</label>
         <Field
           component={Input}

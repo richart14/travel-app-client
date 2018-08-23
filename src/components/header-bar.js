@@ -28,7 +28,7 @@ export class HeaderBar extends React.Component {
       );
     }
     return (
-      <div className="header-bar">
+      <header className="header-bar">
         <div className="left-header">
           <h1>Itinerary Planner</h1>
         </div>
@@ -36,7 +36,7 @@ export class HeaderBar extends React.Component {
           {homeButton}
           {logOutButton}
         </div>
-      </div>
+      </header>
     );
   }
 }

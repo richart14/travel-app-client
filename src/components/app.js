@@ -49,7 +49,7 @@ export class App extends Component {
     return (
       <div className="App">
         <HeaderBar />
-        <main>
+        <main role="main">
           <Route exact path="/trips" component={TripForm} />
           <Switch>
             <Route exact path="/" component={LandingPage} />
