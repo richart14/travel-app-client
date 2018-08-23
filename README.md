@@ -32,8 +32,9 @@ https://itinerary-planner.netlify.com/
 
 ![Main Page](./screenshots/mainPage.png)
 
-
 ![Trip View Page](./screenshots/tripView.png)
+
+![Plan Edit Page](./screenshots/planEdit.png)
 
 ## Tech Stack
 
