@@ -11,6 +11,12 @@ export class PlanEdit extends React.Component {
     this.props.dispatch(fetchPlan(this.props.match.params.planId));
   }
   onSubmit(values) {
+    if (values.checkIn) {
+      values.checkIn = moment.utc(values.checkIn).format();
+    }
+    if (values.checkOut) {
+      values.checkOut = moment.utc(values.checkOut).format();
+    }
     return fetch(`${API_BASE_URL}/plan/${this.props.match.params.planId}`, {
       method: 'PUT',
       body: JSON.stringify({...values, type: this.props.type}),
@@ -1026,8 +1032,8 @@ const mapStateToProps = (state) => {
       token: state.auth.authToken,
       type: state.tripReducer.plan ? state.tripReducer.plan.type : null,
       initialValues: Object.assign({}, state.tripReducer.plan, {
-        checkIn: moment(state.tripReducer.plan.checkIn).format('YYYY-MM-DDThh:mm'),
-        checkOut: moment(state.tripReducer.plan.checkOut).format('YYYY-MM-DDThh:mm')
+        checkIn: moment(state.tripReducer.plan.checkIn).subtract(moment().utcOffset(), 'm').format('YYYY-MM-DDThh:mm'),
+        checkOut: moment(state.tripReducer.plan.checkOut).subtract(moment().utcOffset(), 'm').format('YYYY-MM-DDThh:mm')
       })
     };
   } else {

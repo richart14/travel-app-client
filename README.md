@@ -10,13 +10,17 @@
 
 ## Description
 
-Itinerary Planner is designed to keep your travel plans logged in a convenient spot where you can organize thoughts and users can edit plans that they have on their travels. Be it vactioning or work-related travels, Itinerary Planner will keep and store the data that you need.
+Itinerary Planner is designed to keep your travel plans logged in a convenient spot where you can organize thoughts and users can edit plans that they have on their travels. Be it vactioning or work-related travels, Itinerary Planner will keep and store the data that you need. Currently there are no plans for the app to be re-used by other developers.
 
 
 Work In Progress features...
   - Interactive itinerary sharing
   - Suggestive Locations
   - Map Integration
+
+Test User account with some trips already created:
+  - username: testuser
+  - password: helloworld
 
 
 ## Deployed Version
@@ -27,6 +31,7 @@ https://itinerary-planner.netlify.com/
 ## Screenshots
 
 ![Main Page](./screenshots/mainPage.png)
+
 
 ![Trip View Page](./screenshots/tripView.png)
 

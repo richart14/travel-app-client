@@ -14,6 +14,7 @@ class TripList extends React.Component{
 
   render() {
     const tripList = this.props.trips.map(trip => {
+
       const dateString = moment(trip.startDate).format('MMMM YYYY');
       return (
         <li key={trip.id} className='tripList'>
@@ -31,7 +32,7 @@ class TripList extends React.Component{
                   <p>
                     {trip.destination}
                     <br/>
-                    {`${moment(trip.startDate).format('MMM D')}${(trip.days.length > 0) ? moment(trip.startDate).add(trip.days.length, 'd').format(' - D, YYYY') : moment(trip.startDate).format(', YYYY')}`}
+                    {`${moment(trip.startDate).subtract(moment().utcOffset(), 'm').format('MMM D')}${(trip.days.length > 0) ? moment(trip.startDate).add(trip.days.length, 'd').format(' - MMM D, YYYY') : moment(trip.startDate).format(', YYYY')}`}
                     <br />
                     {`(${trip.days.length} day${trip.days.length === 1 ? '':'s'})`}
                     <br />

@@ -3,10 +3,18 @@ import {reduxForm, Field, SubmissionError} from 'redux-form';
 import {Link, Redirect} from 'react-router-dom';
 import {API_BASE_URL} from '../config';
 import {connect} from 'react-redux';
+import moment from 'moment';
 
 
 export class PlanForm extends React.Component {
   onSubmit(values) {
+    if (values.checkIn) {
+      values.checkIn = moment.utc(values.checkIn).format();
+    }
+    if (values.checkOut) {
+      values.checkOut = moment.utc(values.checkOut).format();
+    }
+
     const newBody = Object.assign({}, values, {
       type: this.props.match.params.type,
       dayId: this.props.match.params.dayId

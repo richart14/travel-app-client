@@ -4,6 +4,7 @@ import {reduxForm, Field, SubmissionError, reset} from 'redux-form';
 import {fetchAllTrip} from '../actions/trips';
 import {connect} from 'react-redux';
 import {API_BASE_URL} from '../config';
+import moment from 'moment';
 
 import './tripForm.css';
 
@@ -11,6 +12,7 @@ import './tripForm.css';
 export class TripForm extends React.Component {
   
   onSubmit(values) {
+    values.startDate = moment(values.startDate).local().format('YYYY-MM-DD');
     return fetch(`${API_BASE_URL}/trip`, {
       method: 'POST',
       body: JSON.stringify(values),
@@ -113,11 +115,11 @@ export class TripForm extends React.Component {
           </div>
           <div className="col-75">
             <Field 
-              name="form-input start"
+              name="startDate"
               component="input"
               type="date"
               id="formStartDate"
-              className="startDate col s6"
+              className="form-input start"
             />
           </div>
 

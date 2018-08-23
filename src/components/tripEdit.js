@@ -14,6 +14,7 @@ export class TripEdit extends React.Component {
     this.props.dispatch(fetchOneTrip(this.props.match.params.tripId));
   }
   onSubmit(values) {
+    values.startDate = moment(values.startDate).local().format('YYYY-MM-DD');
     return fetch(`${API_BASE_URL}/trip/${this.props.match.params.tripId}`, {
       method: 'PUT',
       body: JSON.stringify(values),
@@ -114,11 +115,11 @@ export class TripEdit extends React.Component {
           </div>
           <div className="col-75">
             <Field 
-              name="form-input start"
+              name="startDate"
               component="input"
               type="date"
               id="formStartDate"
-              className="startDate col s6"
+              className="form-input start"
             />
           </div>
 
@@ -155,7 +156,7 @@ const mapStateToProps = (state) => {
       token: state.auth.authToken,
       loggedIn: state.auth.currentUser,
       initialValues: Object.assign({}, state.tripReducer.trip, {
-        startDate: moment(state.tripReducer.trip.startDate).format('YYYY-MM-DD')
+        startDate: moment(state.tripReducer.trip.startDate).local().format('YYYY-MM-DD')
       })
     };
   } else {

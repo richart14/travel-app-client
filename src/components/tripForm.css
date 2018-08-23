@@ -22,15 +22,13 @@ textarea {
 }
 
 /* new stuff after this point */
-.form-input, 
-#formStartDate, 
-#pickUpDate, 
-#dropOffDate {
+
+.form-input {
   width: 80%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  resize: vertical;
+  resize: none;
   background-color: white;
   margin: 10px;
 }

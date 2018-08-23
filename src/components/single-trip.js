@@ -68,7 +68,7 @@ class SingleTrip extends React.Component{
       number = index;
       return (
         <li key={day.id} className='dayList'>
-          {`Day ${index+1}: ${moment(this.props.trip.startDate).add(index, 'd').format('ddd, MMMM D YYYY')}`}
+          {`Day ${index+1}: ${moment(this.props.trip.startDate).subtract(moment().utcOffset(), 'm').add(index, 'd').format('ddd, MMMM D YYYY')}`}
           <br />
           {day.content}
           <br />
@@ -90,12 +90,12 @@ class SingleTrip extends React.Component{
             <option value='direction'>Direction</option>
             <option value='other'>Other</option>
           </select>
-          <SinglePlan planList={day.plans} tripId={this.props.tripId}/>
+          <SinglePlan planList={day.plans} tripId={this.props.tripId} dayId={day.id}/>
         </li>
       );
     });
-    const startDate = moment(this.props.trip.startDate).format('ddd, MMMM D YYYY');
-    const endDate = moment(this.props.trip.startDate).add(number + 1, 'd').format('ddd, MMMM D YYYY');
+    const startDate = moment(this.props.trip.startDate).subtract(moment().utcOffset(), 'm').format('ddd, MMMM D YYYY');
+    const endDate = moment(this.props.trip.startDate).subtract(moment().utcOffset(), 'm').add(number, 'd').format('ddd, MMMM D YYYY');
     const dateString = `From ${startDate} till ${endDate}`;
 
     return (
