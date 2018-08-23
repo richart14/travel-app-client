@@ -9,6 +9,7 @@ const initialState = {
 };
 
 export default function tripReducer (state=initialState, action) {
+  console.log(state.trip, action);
   switch(action.type) {
   case FETCH_TRIPS_SUCCESS:
     return Object.assign({}, state, {
@@ -69,9 +70,13 @@ export default function tripReducer (state=initialState, action) {
       error: action.error
     });
   case DELETE_PLAN_SUCCESS:
-    return Object.assign({}, state, {
-      trip: { days: { plans: state.trip.days.plans.filter(plan => plan.id !== action.planId ? true : false)}}
-    });
+    if (state.trip) {
+      return Object.assign({}, state, {
+        trip: { days: { plans: state.trip.days.plans.filter(plan => plan.id !== action.planId ? true : false)}}
+      });
+    } else {
+      return state;
+    }
   default:
     return state;
   }

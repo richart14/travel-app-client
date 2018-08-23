@@ -1,15 +1,18 @@
 import React from 'react';
 import moment from 'moment';
+import {connect} from 'react-redux';
+import {deletePlan} from '../actions/plans';
 import './plans.css';
 
 export function SinglePlan(props) {
+
   const planList = props.planList.map(plan => {
     switch (plan.type) {
     case 'flight':
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -45,7 +48,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -81,7 +84,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -117,7 +120,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -151,7 +154,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -182,7 +185,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -213,7 +216,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -249,7 +252,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -276,7 +279,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -303,7 +306,7 @@ export function SinglePlan(props) {
       return (
         <li key={plan.id}>
           <button onClick={() => window.location = `/trips/${props.tripId}/${plan.id}/edit`}>EDIT</button>
-          <button onClick={() => props.dispatch(plan.id)}>DELETE</button>
+          <button onClick={() => props.dispatch(deletePlan(plan.id))}>DELETE</button>
           <div className='plans row'>
             <div className="col s12">
               <div className="planType col s6">
@@ -354,3 +357,4 @@ export function SinglePlan(props) {
   );
 }
 
+export default connect()(SinglePlan);

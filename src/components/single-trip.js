@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import {fetchOneTrip} from '../actions/trips';
 import {createDay, deleteDay} from '../actions/days';
 import moment from 'moment';
 import {deletePlan} from '../actions/plans';
 import {withRouter} from 'react-router-dom';
-import {SinglePlan} from './plans';
+import SinglePlan from './plans';
 import './single-trip.css';
 
 class SingleTrip extends React.Component{
@@ -48,9 +47,7 @@ class SingleTrip extends React.Component{
   }
 
   render() {
-    if (!this.props.loggedIn) {
-      return (<Redirect to="/" />);
-    }
+
 
     if (!this.props.trip) {
       return (<div>Trips loading...</div>);
@@ -93,7 +90,7 @@ class SingleTrip extends React.Component{
             <option value='direction'>Direction</option>
             <option value='other'>Other</option>
           </select>
-          <SinglePlan planList={day.plans} tripId={this.props.tripId} dispatch={(planId) => this.handlePlanDelete(planId)}/>
+          <SinglePlan planList={day.plans} tripId={this.props.tripId}/>
         </li>
       );
     });
