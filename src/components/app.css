@@ -1,6 +1,8 @@
 
 main {
   flex-grow: 1;
-  background-color: #BDBDBD;
+  background-color: #03A9F4;
+  width: 80%;
+  margin: 0 auto;
 }
 

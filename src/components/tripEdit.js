@@ -143,7 +143,7 @@ export class TripEdit extends React.Component {
               type="checkbox"
             /> */}
         </div>
-        <Link to="/trips" className="buttonLink tripFormButton" style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
+        <Link to="/trips" className="buttonLink" style={{ textDecoration: 'none', paddingRight: 10}}>Cancel</Link>     
         <button className="tripFormButton" type="submit">Edit Trip</button>
       </form>
     );

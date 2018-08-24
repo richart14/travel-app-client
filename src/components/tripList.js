@@ -50,7 +50,7 @@ class TripList extends React.Component{
       );
     });
     return (
-      <ul>
+      <ul aria-live="polite">
         {tripList}
       </ul>
     );

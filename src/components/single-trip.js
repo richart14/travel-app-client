@@ -74,10 +74,8 @@ class SingleTrip extends React.Component{
           <br />
           {/* <button onClick={() => this.handleEdit(day.id)}>Edit</button> */}
           {editDiv}
-          {/* {' | '} */}
-          <button onClick={() => this.handleDelete(day.id)}>Delete</button >
-          {' | '}
-          <select onChange={(e) => this.handleAddPlan(day.id, e.target.value)}>
+          <button className="tripFormButton" onClick={() => this.handleDelete(day.id)}>Delete</button > 
+          <select className="tripFormButton" onChange={(e) => this.handleAddPlan(day.id, e.target.value)}>
             <option>Add Plan</option>
             <option value='flight'>Flight</option>
             <option value='rental'>Rental</option>
@@ -103,7 +101,7 @@ class SingleTrip extends React.Component{
         <div className="singleTrip-header">
           <h2>{this.props.trip.name}</h2>
           <p>{dateString}</p>
-          <button onClick={() => this.handleClick()}>Add Day</button>
+          <button className="tripFormButton" onClick={() => this.handleClick()}>Add Day</button>
         </div>
         <ul>
           {dayList}

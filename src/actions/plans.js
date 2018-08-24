@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {fetchOneTrip} from './trips';
 
 
 export const fetchPlan = (planId) => (dispatch, getState) => {
@@ -25,7 +26,7 @@ export const fetchPlan = (planId) => (dispatch, getState) => {
   );
 };
 
-export const deletePlan = (planId) => (dispatch, getState) => {
+export const deletePlan = (planId, tripId) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return(
     fetch(`${API_BASE_URL}/plan/${planId}`, {
@@ -41,7 +42,7 @@ export const deletePlan = (planId) => (dispatch, getState) => {
         return; 
       })
       .then(() => {
-        dispatch(deletePlanSuccess(planId));
+        dispatch(fetchOneTrip(tripId));
       })
       .catch(err => {
         dispatch(deletePlanError(err));

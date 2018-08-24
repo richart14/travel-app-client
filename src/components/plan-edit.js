@@ -160,7 +160,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -270,7 +270,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -376,7 +376,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -470,7 +470,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -564,7 +564,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -670,7 +670,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -776,7 +776,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -833,7 +833,7 @@ export class PlanEdit extends React.Component {
                 </div>
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -890,7 +890,7 @@ export class PlanEdit extends React.Component {
                 </div>
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
@@ -1008,7 +1008,7 @@ export class PlanEdit extends React.Component {
                 />
               </div>
             </div>
-            <Link className="buttonLink tripFormButton"to={`/trips/${tripId}`}>Cancel</Link>     
+            <Link className="buttonLink"to={`/trips/${tripId}`}>Cancel</Link>     
             <button className="tripFormButton" type="submit">Edit</button>
           </form>
         );
