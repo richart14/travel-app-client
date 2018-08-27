@@ -39,6 +39,17 @@ export class PlanForm extends React.Component {
   }
   render() {
 
+    // // get the iso time string formatted for usage in an input['type="datetime-local"']
+    // var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    // var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
+    // var localISOTimeWithoutSeconds = localISOTime.slice(0,16);
+
+    // // select the "datetime-local" input to set the default value on
+    // var dtlInput = document.querySelector('input[type="datetime-local"]');
+
+    // // set it and forget it ;)
+    // dtlInput.value = localISOTime.slice(0,16);
+
     if (!this.props.token) {
       return (<Redirect to="/" />);
     }
@@ -52,6 +63,7 @@ export class PlanForm extends React.Component {
     case 'flight':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit((values) =>
             this.onSubmit(values)
           )}>
@@ -154,6 +166,7 @@ export class PlanForm extends React.Component {
     case 'rental':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -264,6 +277,7 @@ export class PlanForm extends React.Component {
     case 'cruise':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -370,6 +384,7 @@ export class PlanForm extends React.Component {
     case 'housing':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -464,6 +479,7 @@ export class PlanForm extends React.Component {
     case 'dining':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -558,6 +574,7 @@ export class PlanForm extends React.Component {
     case 'activity':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -664,6 +681,7 @@ export class PlanForm extends React.Component {
     case 'meeting':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -770,6 +788,7 @@ export class PlanForm extends React.Component {
     case 'map':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -827,6 +846,7 @@ export class PlanForm extends React.Component {
     case 'direction':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>
@@ -884,6 +904,7 @@ export class PlanForm extends React.Component {
     case 'other':
       return (
         <form
+          noValidate
           onSubmit={handleSubmit(values =>
             this.onSubmit(values)
           )}>

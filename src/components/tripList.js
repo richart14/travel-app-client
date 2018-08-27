@@ -40,7 +40,7 @@ class TripList extends React.Component{
                   </p>
                 </div>
                 <div className="card-action">
-                  <Link className="buttonLink" to={`/trips/edit/${trip.id}`}>Edit</Link> | <Link className="buttonLink" to={`/trips/delete/${trip.id}`}>Delete</Link>
+                  <Link className="buttonLink" to={`/trips/edit/${trip.id}`}>Edit</Link> <Link className="buttonLink" to={`/trips/delete/${trip.id}`}>Delete</Link>
                 </div>
                 
               </div>
