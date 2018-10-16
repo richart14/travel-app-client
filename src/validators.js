@@ -12,6 +12,7 @@ export const length = length => value => {
   }
 };
 export const isEmail = value => {
+  // eslint-disable-next-line
   const re = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}','i');
   return re.test(value) ? undefined : `${value} is not an email format`;
 };

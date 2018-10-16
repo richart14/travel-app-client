@@ -70,7 +70,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <div className="col s12">
@@ -172,7 +172,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Provider</h3>
@@ -282,7 +282,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Ship Information</h3>
@@ -388,7 +388,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Confirmation</h3>
@@ -482,7 +482,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Where are you dining?</h3>
@@ -576,7 +576,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>What are you doing?</h3>
@@ -682,7 +682,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Meeting Details</h3>
@@ -788,7 +788,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Where are you going?</h3>
@@ -845,7 +845,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Where are you going?</h3>
@@ -902,7 +902,7 @@ export class PlanEdit extends React.Component {
             )}>
             <div className="row">
               <div className="col s12">
-                <h2>Edit{type}</h2>
+                <h2>Edit {type}</h2>
               </div>
               <div className="col s12">
                 <h3>Details</h3>

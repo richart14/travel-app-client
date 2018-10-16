@@ -7,13 +7,13 @@
 ul {
   padding: 0;
   color: black;
-  background-color: #FFFFFF;
+  /* padding-bottom: 20px; */
 }
 
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .col .row {

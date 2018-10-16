@@ -6,3 +6,7 @@ main {
   margin: 0 auto;
 }
 
+.App {
+  background-color:#C0DEED;
+  background: url(https://abs.twimg.com/images/themes/theme1/bg.png) center top repeat-x;
+}
