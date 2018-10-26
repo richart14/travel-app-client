@@ -44,7 +44,7 @@ export class TripForm extends React.Component {
       .then(()=> this.props.dispatch(fetchAllTrip()))
       .catch(err => Promise.reject(
         new SubmissionError({
-          _error: 'Error submitting message'
+          _error: 'Error submitting'
         })
       ));
   }
