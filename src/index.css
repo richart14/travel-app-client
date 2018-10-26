@@ -24,6 +24,9 @@ ul {
   background-color: #03A9F4;
 }
 
+h1 {
+  text-align: center;
+}
 h1, h2, h3 {
   margin: 0;
   font-size: 2em;
