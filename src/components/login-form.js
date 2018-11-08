@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {login} from '../actions/auth';
+import './login-form.css';
 import {required, nonEmpty} from '../validators';
 
 export class LoginForm extends React.Component {
@@ -24,7 +25,7 @@ export class LoginForm extends React.Component {
         onSubmit={this.props.handleSubmit(values =>
           this.onSubmit(values)
         )}>
-        <div aria-live="polite">{error}</div>
+        {error}
         <label htmlFor="username">Username</label>
         <Field
           component={Input}
