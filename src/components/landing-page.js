@@ -15,6 +15,9 @@ export function LandingPage(props) {
     <div className="home">
       <h2>Make plans for any and all your trips!</h2>
       <p>Build your itineraries and make sure you have a plan no matter where you are!</p>
+      <p><u>Demo User:</u></p>
+      <p><strong>Username:</strong> testuser</p>
+      <p><strong>Password:</strong> helloworld</p>
       <LoginForm />
       <Link className="buttonLink" to="/register">Register</Link>
     </div>
